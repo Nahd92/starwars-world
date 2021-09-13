@@ -84,7 +84,8 @@ export default {
 }
 
 .left-grid-logo:hover {
-  transform: scale(1.07);
+  transform: scale(1.03);
+  transition: 0.3s ease-out;
 }
 
 .nav__toggle:hover,

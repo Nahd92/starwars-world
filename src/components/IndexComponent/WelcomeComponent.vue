@@ -10,7 +10,7 @@
       />
       <div class="welcome-text">
         <h1>STAR WARS WORLD</h1>
-        <p>Here you can find ANYTHING about star wars, welcome to our world!</p>
+        <p>Here you can find EVERYTHING about star wars!</p>
       </div>
     </div>
   </div>
