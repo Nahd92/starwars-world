@@ -35,7 +35,7 @@ export default {
 
 <style lang="scss" scoped>
 .search-container {
-  margin-top: -1.5em;
+  margin-bottom: -4em;
   .input-icons {
     .search-input {
       border-bottom: 0.1px solid white;

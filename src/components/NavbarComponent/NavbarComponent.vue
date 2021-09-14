@@ -11,11 +11,9 @@
         :class="{ showMenu: isExpanded ? 'showMenu' : 'nav__menu' }"
       >
         <ul class="nav-list">
-          <li class="nav-item"><a href="#" class="nav-link">EVENTS</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">NEWS</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">GALLERY</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">ABOUT</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">CONTACT</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Characters</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Movies</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">People</a></li>
         </ul>
       </div>
     </transition>
@@ -28,6 +26,14 @@
 <script>
 export default {
   name: "NavbarComponent",
+  data: () => ({
+    isExpanded: false,
+  }),
+  methods: {
+    toggleMenu() {
+      this.isExpanded = !this.isExpanded;
+    },
+  },
 };
 </script>
 
@@ -35,8 +41,7 @@ export default {
 /* === NAV   === */
 .nav {
   height: var(--header-height-bigger);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   justify-content: space-between;
   padding-top: 10px;
   padding: 10px 2em 2em 0;
@@ -71,13 +76,6 @@ export default {
   line-height: 2.3em;
 }
 
-.nav__search {
-  font-size: 1.7rem;
-  color: white;
-  margin-right: 1em;
-  cursor: pointer;
-}
-
 .left-grid-logo {
   height: 10px;
   width: 20em;
@@ -93,21 +91,12 @@ export default {
   transform: scale(1.07);
 }
 
-.signup {
-  display: none;
-  color: white;
-}
-
-.signup:hover {
-  transform: scale(1.04);
-}
-
 @media screen and (max-width: 1024px) {
   .nav__menu {
     position: fixed;
     top: var(--header-height-bigger);
     right: -100%;
-    width: 40%;
+    width: 30%;
     height: 100vh;
     padding: 2rem;
     background-color: var(--dark-color);
@@ -118,7 +107,7 @@ export default {
     position: fixed;
     top: var(--header-height-bigger);
     right: 0;
-    width: 40%;
+    width: 30%;
     height: 100vh;
     padding: 2rem;
     background-color: var(--dark-color);
@@ -153,21 +142,6 @@ export default {
 }
 
 /* === SEARCH === */
-
-.left-navbar {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.search__input {
-  display: none;
-  height: 2em;
-  margin-top: 0.6em;
-}
-
-.search__input.active {
-  display: inline-block;
-}
 
 @media screen and (min-width: 727px) {
 }
@@ -213,12 +187,6 @@ export default {
     font-size: 1em;
     margin-top: 0.5em;
     padding: 0 0.5em;
-  }
-
-  .signup {
-    display: block;
-    margin-top: 0.5em;
-    color: white;
   }
 }
 </style>

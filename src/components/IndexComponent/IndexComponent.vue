@@ -5,11 +5,10 @@
     <Header />
     <!-- Welcome part-->
     <Welcome />
-
     <!-- Search part-->
     <Search />
-
     <!-- Main Part -->
+    <Main />
 
     <!-- Footer Part -->
   </div>
@@ -19,6 +18,7 @@
 import Header from "./HeaderComponent.vue";
 import Welcome from "./WelcomeComponent.vue";
 import Search from "../SearchComponent/SearchComponent.vue";
+import Main from "./MainComponent.vue";
 
 export default {
   name: "IndexComponent",
@@ -26,6 +26,7 @@ export default {
     Header,
     Welcome,
     Search,
+    Main,
   },
 };
 </script>
