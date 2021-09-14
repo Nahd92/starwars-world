@@ -6,17 +6,14 @@
 
     <!-- NAVBAR -->
     <transition name="fade">
-      <div
-        v-show="isExpanded"
-        :class="{ showMenu: isExpanded ? 'showMenu' : 'nav__menu' }"
-      >
+      <div :class="[isExpanded ? 'show-menu' : 'hide']">
         <ul class="nav-list">
           <li class="nav-item"><a href="#" class="nav-link">Characters</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Movies</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">People</a></li>
         </ul>
       </div>
     </transition>
+
     <div class="nav__toggle" @click="toggleMenu">
       <i class="bx bx-grid-alt"></i>
     </div>
@@ -46,7 +43,6 @@ export default {
   padding-top: 10px;
   padding: 10px 2em 2em 0;
   background: transparent;
-  margin: 0;
   width: 100%;
   background-color: var(--dark-color);
   box-shadow: 5px -1px 12px -5px grey;
@@ -92,21 +88,11 @@ export default {
 }
 
 @media screen and (max-width: 1024px) {
-  .nav__menu {
+  .hide {
+    border: solid red 1px;
     position: fixed;
     top: var(--header-height-bigger);
     right: -100%;
-    width: 30%;
-    height: 100vh;
-    padding: 2rem;
-    background-color: var(--dark-color);
-    font-size: 15px;
-    transition: 0.3s;
-  }
-  .showMenu {
-    position: fixed;
-    top: var(--header-height-bigger);
-    right: 0;
     width: 30%;
     height: 100vh;
     padding: 2rem;
@@ -122,6 +108,36 @@ export default {
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
   }
+
+  .show-menu {
+    position: fixed;
+    border: solid red 1px;
+    top: var(--header-height-bigger);
+    right: 0;
+    width: 30%;
+    height: 100vh;
+    padding: 2rem;
+    background-color: var(--dark-color);
+    font-size: 15px;
+    transition: 0.3s;
+  }
+}
+
+/* === BUTTONS  === */
+
+.btn {
+  display: inline-block;
+  background-color: var(--white-color);
+  padding: 1.4rem 2rem;
+  color: var(--dark-color);
+  font-weight: var(--font-medium);
+  font-size: var(--font-medium);
+  border-radius: 0.5rem;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.2);
 }
 
 /* === BUTTONS  === */

@@ -1,15 +1,18 @@
 <template>
   <div id="app">
     <Index />
+    <movies-list-component />
   </div>
 </template>
 
 <script>
 import Index from "./components/IndexComponent/IndexComponent.vue";
+import MoviesListComponent from "./components/MoviesComponent/MoviesListComponent.vue";
 export default {
   name: "app",
   components: {
     Index,
+    MoviesListComponent,
   },
 };
 </script>

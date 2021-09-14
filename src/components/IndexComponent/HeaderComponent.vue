@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <!-- Här ska alla delar som ska finnas i HEADER importeras in -->
-    <navbar />
+    <Navbar />
   </header>
 </template>
 
