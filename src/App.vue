@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <Index />
-    <movies-list-component />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Index from "./components/IndexComponent/IndexComponent.vue";
-import MoviesListComponent from "./components/MoviesComponent/MoviesListComponent.vue";
+import Footer from "./components/FooterComponent/FooterComponent.vue";
 export default {
   name: "app",
   components: {
     Index,
-    MoviesListComponent,
+    Footer,
   },
 };
 </script>
