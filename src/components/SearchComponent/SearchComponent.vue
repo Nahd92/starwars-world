@@ -37,12 +37,15 @@ export default {
 .search-container {
   margin-bottom: -4em;
   .input-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .search-input {
       border-bottom: 0.1px solid white;
       border-right: none;
       border-left: none;
       background: transparent;
-      width: 100%;
+      width: 70%;
       height: 4em;
       text-align: left;
 
@@ -70,14 +73,14 @@ export default {
       padding: 0.5em;
       font-size: 1.9em;
       position: absolute;
-      left: 0;
+      left: 9.5em;
       color: #fff;
     }
     .cross-icon {
       padding: 0.5em;
       font-size: 2em;
       position: absolute;
-      right: 0;
+      right: 9em;
       color: #fff;
       cursor: pointer;
     }
