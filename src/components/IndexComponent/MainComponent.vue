@@ -4,10 +4,12 @@
     <!-- Search part-->
     <Search />
     <Movies />
+    <Character/>
+    
   </main>
 </template>
 
-<Character/>
+
 <script>
 
 import Character from "../CharacterComponent/CharacterListComponent.vue"
@@ -15,6 +17,8 @@ export default {
   name: "MainComponent",
   componets:{
     Character
+    
+
 
   }
   
