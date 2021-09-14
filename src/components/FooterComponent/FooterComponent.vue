@@ -1,5 +1,8 @@
 <template>
-  <footer class="footer"></footer>
+  <footer class="footer">
+    <p>star wars</p>
+  </footer>
+  
 </template>
 
 <script>
