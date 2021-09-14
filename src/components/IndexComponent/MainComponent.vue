@@ -1,12 +1,22 @@
 <template>
-  <main class="main">
+  <main class="main bd-grid">
     <!-- Här ska alla delar som ska finnas i main importeras in -->
+    <!-- Search part-->
+    <Search />
+    <Movies />
   </main>
 </template>
 
 <script>
+import Search from "../SearchComponent/SearchComponent.vue";
+
+import Movies from "../MoviesComponent/MoviesListComponent.vue";
 export default {
   name: "MainComponent",
+  components: {
+    Search,
+    Movies,
+  },
 };
 </script>
 
@@ -15,7 +25,6 @@ export default {
 
 .main {
   background-color: var(--dark-color);
-  height: 100vh;
   width: 100%;
 }
 </style>

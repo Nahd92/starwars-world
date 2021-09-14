@@ -5,19 +5,19 @@
     <Header />
     <!-- Welcome part-->
     <Welcome />
-    <!-- Search part-->
-    <Search />
+
     <!-- Main Part -->
     <Main />
 
     <!-- Footer Part -->
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from "./HeaderComponent.vue";
 import Welcome from "./WelcomeComponent.vue";
-import Search from "../SearchComponent/SearchComponent.vue";
+import Footer from "../FooterComponent/FooterComponent.vue";
 import Main from "./MainComponent.vue";
 
 export default {
@@ -25,8 +25,8 @@ export default {
   components: {
     Header,
     Welcome,
-    Search,
     Main,
+    Footer,
   },
 };
 </script>

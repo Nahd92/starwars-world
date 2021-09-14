@@ -13,4 +13,9 @@ export default {
 
 <style lang="scss" scoped>
 @import "./style/styles.scss";
+
+.searchResult-container {
+  height: 20vh;
+  background-color: white;
+}
 </style>
