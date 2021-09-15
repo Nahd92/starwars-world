@@ -1,75 +1,59 @@
 <template>
-    <section>
-        <h2 class="character-title">All Character</h2>
-        <div class="character-container">
-            <div class="character-card">
-                <div class="character-img">
-                    <img src="../../assets/luke2.jpg" alt="luke">
-                </div>
-                <div class="character-information" >
-                    <h3 class="character-name" >{{characterName}}</h3>
-                    <h3 class="character-age">{{characterAge}}</h3>
-                    <h3 class="character-eyes">{{characterEyeColor}}</h3>
-                </div>
-                <div class="card-button">
-                    <button class="read-more">Reade more</button>
-                </div>
-            </div>
-           
-             
+  <section>
+    <h2 class="character-title">All Character</h2>
+    <div class="character-container">
+      <div class="character-card">
+        <div class="character-img">
+          <img src="../../assets/luke2.jpg" alt="luke" />
         </div>
-        
-    </section>
+        <div class="character-information">
+          <h3 class="character-name">{{ characterName }}</h3>
+          <h3 class="character-age">{{ characterAge }}</h3>
+          <h3 class="character-eyes">{{ characterEyeColor }}</h3>
+        </div>
+        <div class="card-button">
+          <button class="read-more">Reade more</button>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 <script>
-
 export default {
-    name:"CharacterListComponent",
-    data:()=> ({
-        character:[],
-        characterImages: {},
-        dataFromapi:[]
-        
-    }),
-    computed:{
-        characterName(){
-             return this.dataFromapi ? this.dataFromapi.name : ''
- 
-         },
-        
-        
-        characterAge(){
-           return this.dataFromapi ? this.dataFromapi.birth_year : ''
-        },
-        characterEyeColor(){
-            return this.dataFromapi ? this.dataFromapi.eye_color : ''
-        }
-
+  name: "CharacterListComponent",
+  data: () => ({
+    character: [],
+    characterImages: {},
+    dataFromapi: [],
+  }),
+  computed: {
+    characterName() {
+      return this.dataFromapi ? this.dataFromapi.name : "";
     },
-   
-    async mounted(){
-        const url ="https://swapi.dev/api/people";
-        try{
-            const response = await fetch(url);
-            const data = await response.json();
-          this.dataFromapi = data
-            
-            for(let i=0; i<data.length; i++)
-            {
-                this.dataFromapi = data[i]
 
+    characterAge() {
+      return this.dataFromapi ? this.dataFromapi.birth_year : "";
+    },
+    characterEyeColor() {
+      return this.dataFromapi ? this.dataFromapi.eye_color : "";
+    },
+  },
 
-            }
-            
-          
-           
-        }
-        catch(error)
-        {
-            console.log(error)
-        }
+  async mounted() {
+    const url = "https://swapi.dev/api/people";
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      this.dataFromapi = data;
+
+      for (let i = 0; i < data.results.length; i++) {
+        this.dataFromapi = data[i];
+      }
+    } catch (error) {
+      console.log(error);
     }
-}
+  },
+};
 </script>
 <style lang="scss" scoped>
 @import "./style/styles.scss";
@@ -86,8 +70,6 @@ p {
   width: 50%;
   background-color: var(--dark-color);
 }
-
-
 
 .character-title {
   text-align: center;
@@ -130,8 +112,7 @@ p {
       img {
         border-radius: 0.5em;
         width: 17em;
-        height:11em ;
-
+        height: 11em;
       }
     }
 
