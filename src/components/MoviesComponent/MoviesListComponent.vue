@@ -22,7 +22,7 @@
     <!--PARENT-->
     <ShowMore
       v-show="containerHeight <= 80"
-      v-if="containerHeight <= 80"
+      v-if="containerHeight <= 32"
       v-on:showMore="increaseHeight()"
     />
     <ShowMore
@@ -51,23 +51,7 @@ export default {
         text: "STAR WARS GALAXY OF HEROES",
       },
       {
-        src: require("@/assets/galaxy.jpg"),
-        text: "STAR WARS GALAXY OF HEROES",
-      },
-      {
-        src: require("@/assets/galaxy.jpg"),
-        text: "STAR WARS GALAXY OF HEROES",
-      },
-      {
-        src: require("@/assets/galaxy.jpg"),
-        text: "STAR WARS GALAXY OF HEROES",
-      },
-      {
-        src: require("@/assets/galaxy.jpg"),
-        text: "STAR WARS GALAXY OF HEROES",
-      },
-      {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/luke2.jpg"),
         text: "STAR WARS GALAXY OF HEROES",
       },
       {
@@ -104,16 +88,23 @@ export default {
       }
     },
   },
-
+  computed: {
+    moveTitle() {
+      return "";
+    },
+  },
   async mounted() {
     const url = "https://swapi.dev/api/films";
     try {
       const response = await fetch(url);
       const data = await response.json();
 
-      console.log(data);
       for (let i = 0; i < data.results.length; i++) {
-        this.fetchedFilms.push(i);
+        const element = data.results[i];
+        const title = element.title;
+        console.log(title);
+        const src = this.films[i].src;
+        this.fetchedFilms.push({ src, title });
       }
     } catch (error) {
       console.log(error);

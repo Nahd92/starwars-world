@@ -22,7 +22,6 @@
     </section>
 </template>
 <script>
-
 export default {
     name:"CharacterListComponent",
     data:()=> ({
@@ -58,7 +57,8 @@ export default {
             console.log(error)
         }
     }
-}
+  
+};
 </script>
 <style lang="scss" scoped>
 @import "./style/styles.scss";
@@ -106,8 +106,7 @@ p {
       img {
         border-radius: 0.5em;
         width: 17em;
-        height:11em ;
-
+        height: 11em;
       }
     }
 
