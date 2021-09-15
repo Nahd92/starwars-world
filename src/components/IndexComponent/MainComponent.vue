@@ -15,7 +15,7 @@ import Movies from "../MoviesComponent/MoviesListComponent.vue";
 import Character from "../CharacterComponent/CharacterListComponent.vue";
 export default {
   name: "MainComponent",
-  componets: {
+  components: {
     Search,
     Movies,
     Character,
