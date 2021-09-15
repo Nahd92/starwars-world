@@ -1,15 +1,15 @@
 <template>
-    <section>
+    <section class="characterList">
         <h2 class="character-title">All Character</h2>
         <div class="character-container">
-            <div class="character-card">
+            <div class="character-card" v-for="character in fetchCharacters" v-bind:key="character.id">
                 <div class="character-img">
                     <img src="../../assets/luke2.jpg" alt="luke">
                 </div>
                 <div class="character-information" >
-                    <h3 class="character-name" >{{characterName}}</h3>
-                    <h3 class="character-age">{{characterAge}}</h3>
-                    <h3 class="character-eyes">{{characterEyeColor}}</h3>
+                    <h3 class="character-name" >{{character.name}}</h3>
+                    <h3 class="character-age">{{character.birthYear}}</h3>
+                    <h3 class="character-eyes">{{character.eyeColor}}</h3>
                 </div>
                 <div class="card-button">
                     <button class="read-more">Reade more</button>
@@ -18,7 +18,7 @@
            
              
         </div>
-        
+       
     </section>
 </template>
 <script>
@@ -28,38 +28,27 @@ export default {
     data:()=> ({
         character:[],
         characterImages: {},
-        dataFromapi:[]
+        fetchCharacters:[]
         
     }),
-    computed:{
-        characterName(){
-             return this.dataFromapi ? this.dataFromapi.name : ''
- 
-         },
-        
-        
-        characterAge(){
-           return this.dataFromapi ? this.dataFromapi.birth_year : ''
-        },
-        characterEyeColor(){
-            return this.dataFromapi ? this.dataFromapi.eye_color : ''
-        }
-
-    },
+    
    
     async mounted(){
         const url ="https://swapi.dev/api/people";
         try{
             const response = await fetch(url);
             const data = await response.json();
-          this.dataFromapi = data
+          
             
-            for(let i=0; i<data.length; i++)
+            for(let i=0; i<data.results.length; i++)
             {
-                this.dataFromapi = data[i]
-
-
+                const element = data.results[i];
+                const name = element.name;
+                const birthYear = element.birth_year;
+                const eyeColor = element.eye_color;
+                this.fetchCharacters.push({name,birthYear,eyeColor})
             }
+            console.log(this.fetchCharacters)
             
           
            
@@ -79,16 +68,6 @@ p {
   color: black;
 }
 
-.cards-overlay {
-  position: absolute;
-  height: 100vh;
-  margin-top: 40em;
-  width: 50%;
-  background-color: var(--dark-color);
-}
-
-
-
 .character-title {
   text-align: center;
 }
@@ -97,13 +76,10 @@ p {
   font-size: 3em;
 }
 .character-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: 3em;
-  height: 30em;
+  display: flex; 
+  flex-wrap:wrap ;
+  align-items:center;
+  justify-content: space-evenly;
   overflow: hidden;
 
   .character-card {
