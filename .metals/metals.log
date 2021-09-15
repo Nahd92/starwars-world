@@ -1,0 +1,18 @@
+[0m2021.09.15 09:24:42 INFO  Started: Metals version 0.10.6 in workspace 'C:\Users\Admin\Desktop\SchoolProject\starwars-world' for client Visual Studio Code 1.52.1.[0m
+[0m2021.09.15 09:24:44 INFO  time: initialize in 1.89s[0m
+[0m2021.09.15 09:24:46 WARN  Build server is not auto-connectable.[0m
+[0m2021.09.15 09:24:46 WARN  no build tool detected in workspace 'C:\Users\Admin\Desktop\SchoolProject\starwars-world'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+sep 15, 2021 10:58:08 FM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+sep 15, 2021 11:00:24 FM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+sep 15, 2021 11:08:00 FM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+sep 15, 2021 11:08:01 FM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+sep 15, 2021 11:21:28 FM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+sep 15, 2021 11:21:32 FM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+sep 15, 2021 1:23:08 EM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace

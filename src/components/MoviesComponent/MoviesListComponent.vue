@@ -1,136 +1,123 @@
 <template>
-  <section class="movieList bd-grid">
+  <section class="movieList">
     <h2 class="movieList-title">All Movies</h2>
-    <div class="movieList-container">
+    <div :style="{ height: containerHeight + 'em' }" class="movieListContainer">
       <!-- Adding v-for here -->
-      <div class="movieList-card">
+      <div class="movieList-card" v-for="film in films" v-bind:key="film.id">
         <div class="movie-img">
           <!-- Adding src by binding here -->
-          <img src="../../assets/galaxy.jpg" alt="Helmet" />
+          <img :src="film.src" alt="Helmet" />
         </div>
         <div class="movie-information">
           <h3 class="card-text">
-            STAR WARS <br />
-            GALAXY OF HEROES {{ /* Title */}}
+            {{ film.text }}
           </h3>
         </div>
         <div class="card-button">
           <button class="read-more">Read more!</button>
         </div>
       </div>
+    </div>
 
-      <div class="movieList-card">
-        <div class="movie-img">
-          <!-- Adding src by binding here -->
-          <img src="../../assets/galaxy.jpg" alt="Helmet" />
-        </div>
-        <div class="movie-information">
-          <h3 class="card-text">
-            STAR WARS <br />
-            GALAXY OF HEROES {{ /* Title */}}
-          </h3>
-        </div>
-        <div class="card-button">
-          <button class="read-more">Read more!</button>
-        </div>
-      </div>
+    <!--PARENT-->
+    <ShowMore
+      v-show="containerHeight <= 80"
+      v-if="containerHeight <= 80"
+      v-on:showMore="increaseHeight()"
+    />
+    <ShowMore
+      v-else
+      aria-disabled="true"
+      v-on:showNotMore="setHeightToDefault()"
+    />
 
-      <div class="movieList-card">
-        <div class="movie-img">
-          <!-- Adding src by binding here -->
-          <img src="../../assets/galaxy.jpg" alt="Helmet" />
-        </div>
-        <div class="movie-information">
-          <h3 class="card-text">
-            STAR WARS <br />
-            GALAXY OF HEROES {{ /* Title */}}
-          </h3>
-        </div>
-        <div class="card-button">
-          <button class="read-more">Read more!</button>
-        </div>
-      </div>
-
-      <div class="movieList-card">
-        <div class="movie-img">
-          <!-- Adding src by binding here -->
-          <img src="../../assets/galaxy.jpg" alt="Helmet" />
-        </div>
-        <div class="movie-information">
-          <h3 class="card-text">
-            STAR WARS <br />
-            GALAXY OF HEROES {{ /* Title */}}
-          </h3>
-        </div>
-        <div class="card-button">
-          <button class="read-more">Read more!</button>
-        </div>
-      </div>
-
-      <div class="movieList-card">
-        <div class="movie-img">
-          <!-- Adding src by binding here -->
-          <img src="../../assets/galaxy.jpg" alt="Helmet" />
-        </div>
-        <div class="movie-information">
-          <h3 class="card-text">
-            STAR WARS <br />
-            GALAXY OF HEROES {{ /* Title */}}
-          </h3>
-        </div>
-        <div class="card-button">
-          <button class="read-more">Read more!</button>
-        </div>
-      </div>
-      <div class="movieList-card">
-        <div class="movie-img">
-          <!-- Adding src by binding here -->
-          <img src="../../assets/galaxy.jpg" alt="Helmet" />
-        </div>
-        <div class="movie-information">
-          <h3 class="card-text">
-            STAR WARS <br />
-            GALAXY OF HEROES {{ /* Title */}}
-          </h3>
-        </div>
-        <div class="card-button">
-          <button class="read-more">Read more!</button>
-        </div>
-      </div>
-      <div class="movieList-card">
-        <div class="movie-img">
-          <!-- Adding src by binding here -->
-          <img src="../../assets/galaxy.jpg" alt="Helmet" />
-        </div>
-        <div class="movie-information">
-          <h3 class="card-text">
-            STAR WARS <br />
-            GALAXY OF HEROES {{ /* Title */}}
-          </h3>
-        </div>
-        <div class="card-button">
-          <button class="read-more">Read more!</button>
-        </div>
-      </div>
-
-      <div class="cards-overlay"></div>
+    <div class="films" v-for="film in fetchedFilms" v-bind:key="film.id">
+      {{ film }}
     </div>
   </section>
 </template>
 
 <script>
+import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
 export default {
+  components: {
+    ShowMore,
+  },
   name: "MoviesListComponent",
   data: () => ({
-    films: [],
-    filmImages: {},
+    films: [
+      {
+        src: require("@/assets/galaxy.jpg"),
+        text: "STAR WARS GALAXY OF HEROES",
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+        text: "STAR WARS GALAXY OF HEROES",
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+        text: "STAR WARS GALAXY OF HEROES",
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+        text: "STAR WARS GALAXY OF HEROES",
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+        text: "STAR WARS GALAXY OF HEROES",
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+        text: "STAR WARS GALAXY OF HEROES",
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+        text: "STAR WARS GALAXY OF HEROES",
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+        text: "STAR WARS GALAXY OF HEROES",
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+        text: "STAR WARS GALAXY OF HEROES",
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+        text: "STAR WARS GALAXY OF HEROES",
+      },
+    ],
+    containerHeight: 32,
+    containerMaxHeight: false,
+    fetchedFilms: [],
   }),
+  methods: {
+    increaseHeight() {
+      this.containerHeight += 25;
+    },
+    setHeightToDefault() {
+      this.containerHeight = 32;
+    },
+    containerHeightMax() {
+      if (this.containerHeight >= 82) {
+        this.containerHeightMax = !this.containerHeight;
+      }
+    },
+  },
+
   async mounted() {
     const url = "https://swapi.dev/api/films";
     try {
-      const response = fetch(url);
+      const response = await fetch(url);
       const data = await response.json();
-    } catch (error) {}
+
+      console.log(data);
+      for (let i = 0; i < data.results.length; i++) {
+        this.fetchedFilms.push(i);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
 </script>
@@ -143,14 +130,6 @@ p {
   color: black;
 }
 
-.cards-overlay {
-  position: absolute;
-  height: 100vh;
-  margin-top: 40em;
-  width: 50%;
-  background-color: var(--dark-color);
-}
-
 .movieList-title {
   text-align: center;
 }
@@ -158,13 +137,13 @@ p {
 .movieList-title {
   font-size: 3em;
 }
-.movieList-container {
+
+.movieListContainer {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
-  margin-top: 3em;
+  justify-content: space-evenly;
+  overflow: hidden;
 
   .movieList-card {
     background-color: black;
@@ -235,4 +214,26 @@ p {
     }
   }
 }
+
+@media screen and (min-width: 727px) {
+}
+
+@media screen and (min-width: 1024px) {
+  .movieListContainer {
+    display: flex;
+
+    .movieList-card {
+      padding: 0.5em;
+    }
+  }
+}
 </style>
+
+
+
+
+
+
+
+
+
