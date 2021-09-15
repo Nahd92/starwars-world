@@ -6,81 +6,19 @@
                 <div class="character-img">
                     <img src="../../assets/luke2.jpg" alt="luke">
                 </div>
-                <div class="character-information">
-                    <h3 class="character-name">Luke Skywalker</h3>
-                    <h3 class="character-age">30</h3>
-                    <h3 class="character-eyes">blue</h3>
+                <div class="character-information" >
+                    <h3 class="character-name" >{{characterName}}</h3>
+                    <h3 class="character-age">{{characterAge}}</h3>
+                    <h3 class="character-eyes">{{characterEyeColor}}</h3>
                 </div>
                 <div class="card-button">
                     <button class="read-more">Reade more</button>
                 </div>
             </div>
-            <div class="character-card">
-                <div class="character-img">
-                    <img src="../../assets/luke2.jpg" alt="luke">
-                </div>
-                <div class="character-information">
-                    <h3 class="character-name">Luke Skywalker</h3>
-                    <h3 class="character-age">30</h3>
-                    <h3 class="character-eyes">blue</h3>
-                </div>
-                <div class="card-button">
-                    <button class="read-more">Reade more</button>
-                </div>
-            </div>
-            <div class="character-card">
-                <div class="character-img">
-                    <img src="../../assets/luke2.jpg" alt="luke">
-                </div>
-                <div class="character-information">
-                    <h3 class="character-name">Luke Skywalker</h3>
-                    <h3 class="character-age">30</h3>
-                    <h3 class="character-eyes">blue</h3>
-                </div>
-                <div class="card-button">
-                    <button class="read-more">Reade more</button>
-                </div>
-            </div>
-            <div class="character-card">
-                <div class="character-img">
-                    <img src="../../assets/luke2.jpg" alt="luke">
-                </div>
-                <div class="character-information">
-                    <h3 class="character-name">Luke Skywalker</h3>
-                    <h3 class="character-age">30</h3>
-                    <h3 class="character-eyes">blue</h3>
-                </div>
-                <div class="card-button">
-                    <button class="read-more">Reade more</button>
-                </div>
-            </div>
-            <div class="character-card">
-                <div class="character-img">
-                    <img src="../../assets/luke2.jpg" alt="luke">
-                </div>
-                <div class="character-information">
-                    <h3 class="character-name">Luke Skywalker</h3>
-                    <h3 class="character-age">30</h3>
-                    <h3 class="character-eyes">blue</h3>
-                </div>
-                <div class="card-button">
-                    <button class="read-more">Reade more</button>
-                </div>
-            </div>
-            <div class="character-card">
-                <div class="character-img">
-                    <img src="../../assets/luke2.jpg" alt="luke">
-                </div>
-                <div class="character-information">
-                    <h3 class="character-name">Luke Skywalker</h3>
-                    <h3 class="character-age">30</h3>
-                    <h3 class="character-eyes">blue</h3>
-                </div>
-                <div class="card-button">
-                    <button class="read-more">Reade more</button>
-                </div>
-            </div>
+           
+             
         </div>
+        <div class="show-more">Show more</div>
     </section>
 </template>
 <script>
@@ -89,14 +27,44 @@ export default {
     name:"CharacterListComponent",
     data:()=> ({
         character:[],
-        characterImages:{},
+        characterImages: {},
+        dataFromapi:[]
         
     }),
+    computed:{
+        characterName(){
+             return this.dataFromapi ? this.dataFromapi.name : ''
+             
+
+            
+         },
+        
+        
+        characterAge(){
+           return this.dataFromapi ? this.dataFromapi.birth_year : ''
+        },
+        characterEyeColor(){
+            return this.dataFromapi ? this.dataFromapi.eye_color : ''
+        }
+
+    },
+   
     async mounted(){
         const url ="https://swapi.dev/api/people";
         try{
-            const response = fetch(url);
-            const data = await response.json(url);
+            const response = await fetch(url);
+            const data = await response.json();
+          this.dataFromapi = data
+            
+            for(let i=0; i<data.length; i++)
+            {
+                this.dataFromapi = data[i]
+
+
+            }
+            
+          
+           
         }
         catch(error)
         {
@@ -120,6 +88,16 @@ p {
   width: 50%;
   background-color: var(--dark-color);
 }
+.show-more{
+    position: absolute;
+    background-color:red ;
+    height: 2em;
+    width: 60%;
+    color: white;
+    
+
+}
+
 
 .character-title {
   text-align: center;
@@ -135,6 +113,8 @@ p {
   align-items: center;
   justify-content: space-around;
   margin-top: 3em;
+  height: 30em;
+  overflow: hidden;
 
   .character-card {
     background-color: black;
