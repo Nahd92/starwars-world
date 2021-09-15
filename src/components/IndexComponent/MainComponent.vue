@@ -4,27 +4,22 @@
     <!-- Search part-->
     <Search />
     <Movies />
-    <Character/>
-    
+    <Character />
   </main>
 </template>
 
 
 <script>
-
-import Character from "../CharacterComponent/CharacterListComponent.vue"
+import Search from "../SearchComponent/SearchComponent.vue";
+import Movies from "../MoviesComponent/MoviesListComponent.vue";
+import Character from "../CharacterComponent/CharacterListComponent.vue";
 export default {
   name: "MainComponent",
-  componets:{
+  componets: {
+    Search,
+    Movies,
     Character,
-    
-    
-    
-
-
-  }
-  
-  
+  },
 };
 </script>
 
