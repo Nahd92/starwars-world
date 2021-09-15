@@ -1,10 +1,13 @@
 <template>
   <footer class="footer">
-    <p>STAR WARS WORLD SOCIAL:</p>
-    <ul>
-      <li><i class="bx bxl-facebook-circle"></i></li>
-      <li><i class="bx bxl-instagram"></i></li>
-    </ul>
+    <div class="socials">
+      <p>STAR WARS WORLD SOCIAL:</p>
+      <ul>
+        <li><i class="bx bxl-facebook-circle"></i></li>
+        <li><i class="bx bxl-instagram"></i></li>
+      </ul>
+    </div>
+    
     <div class="about">
       <h3>About:</h3>
       <p>
@@ -30,9 +33,13 @@ export default {
 @import "./style/styles.scss";
 
 .footer {
+  
   text-align: center;
   height: 20em;
   background-color: var(--dark-color);
+}
+.socials {
+  padding-top: 3em;
 }
 
 .about {

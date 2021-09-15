@@ -5,6 +5,7 @@
     <Search />
     <Movies />
     <Character />
+    
   </main>
 </template>
 
