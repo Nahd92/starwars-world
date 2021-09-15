@@ -16,7 +16,9 @@ import Character from "../CharacterComponent/CharacterListComponent.vue"
 export default {
   name: "MainComponent",
   componets:{
-    Character
+    Character,
+    
+    
     
 
 
