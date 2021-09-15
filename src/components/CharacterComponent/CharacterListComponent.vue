@@ -18,7 +18,7 @@
            
              
         </div>
-        <div class="show-more">Show more</div>
+        
     </section>
 </template>
 <script>
@@ -88,15 +88,7 @@ p {
   width: 50%;
   background-color: var(--dark-color);
 }
-.show-more{
-    position: absolute;
-    background-color:red ;
-    height: 2em;
-    width: 60%;
-    color: white;
-    
 
-}
 
 
 .character-title {
