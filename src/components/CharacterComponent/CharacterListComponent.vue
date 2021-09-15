@@ -34,9 +34,7 @@ export default {
     computed:{
         characterName(){
              return this.dataFromapi ? this.dataFromapi.name : ''
-             
-
-            
+ 
          },
         
         
