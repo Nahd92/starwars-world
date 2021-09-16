@@ -3,14 +3,18 @@
     <h2 class="movieList-title">All Movies</h2>
     <div :style="{ height: containerHeight + 'em' }" class="movieListContainer">
       <!-- Adding v-for here -->
-      <div class="movieList-card" v-for="film in films" v-bind:key="film.id">
+      <div
+        class="movieList-card"
+        v-for="film in fetchedFilms"
+        v-bind:key="film.id"
+      >
         <div class="movie-img">
           <!-- Adding src by binding here -->
           <img :src="film.src" alt="Helmet" />
         </div>
         <div class="movie-information">
           <h3 class="card-text">
-            {{ film.text }}
+            {{ film.title }}
           </h3>
         </div>
         <div class="card-button">
@@ -30,10 +34,6 @@
       aria-disabled="true"
       v-on:showNotMore="setHeightToDefault()"
     />
-
-    <div class="films" v-for="film in fetchedFilms" v-bind:key="film.id">
-      {{ film }}
-    </div>
   </section>
 </template>
 
@@ -102,7 +102,6 @@ export default {
       for (let i = 0; i < data.results.length; i++) {
         const element = data.results[i];
         const title = element.title;
-        console.log(title);
         const src = this.films[i].src;
         this.fetchedFilms.push({ src, title });
       }
