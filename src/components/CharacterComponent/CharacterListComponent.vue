@@ -2,9 +2,9 @@
     <section class="characterList">
         <h2 class="character-title">All Character</h2>
         <div class="character-container">
-            <div class="character-card" v-for="character in fetchCharacters" v-bind:key="character.id">
+            <div class="character-card" v-for="character in fetchCharacters" v-bind:key="character" >
                 <div class="character-img">
-                    <img src="../../assets/luke2.jpg" alt="luke">
+                     <img :src="character.src" alt="Helmet" />
                 </div>
                 <div class="character-information" >
                     <h3 class="character-name" >{{character.name}}</h3>
@@ -16,20 +16,50 @@
                 </div>
             </div>
            
-             
         </div>
-       
+       <div class="characterCovers" v-for="character in fetchCharacters" v-bind:key="character.id">
+      {{ character }}
+    </div>
     </section>
 </template>
 <script>
+import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
 export default {
-    name:"CharacterListComponent",
+   name:"CharacterListComponent",
     data:()=> ({
-        character:[],
+         characterCovers: [
+      {
+        src: require("@/assets/luke2.jpg"),
+         
+      },
+      {
+        src: require("@/assets/c-3po.jpeg"),
+        
+      },
+      {
+        src: require("@/assets/r2d2.jpeg"),
+        
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+       
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+       
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+       
+      },
+    ],
         characterImages: {},
         fetchCharacters:[]
         
-    }),
+    }),computed:{
+        
+
+    },
     
    
     async mounted(){
