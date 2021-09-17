@@ -5,10 +5,11 @@
       <!-- Adding v-for here -->
       <div
         class="movieList-card"
-        v-for="film in fetchedFilms"
+        v-for="(film, index) in fetchedFilms"
         v-bind:key="film.id"
       >
         <div class="movie-img">
+          gooliga
           <!-- Adding src by binding here -->
           <img :src="film.src" alt="Helmet" />
         </div>
@@ -18,7 +19,7 @@
           </h3>
         </div>
         <div class="card-button">
-          <button class="read-more">Read more!</button>
+          <Modal :movie="movies[index]" />
         </div>
       </div>
     </div>
@@ -38,9 +39,12 @@
 </template>
 
 <script>
+import Modal from "../ModalComponent/ModalComponent.vue";
 import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
 export default {
+  name: "MoviesListComponent",
   components: {
+    Modal,
     ShowMore,
   },
   props: {
@@ -49,7 +53,6 @@ export default {
       default: () => [],
     },
   },
-  name: "MoviesListComponent",
   data: () => ({
     films: [
       {
@@ -74,8 +77,12 @@ export default {
     containerHeight: 32,
     containerMaxHeight: false,
     fetchedFilms: [],
+    cardHover: true,
   }),
   methods: {
+    toggleCardHover() {
+      this.cardHover = !this.cardHover;
+    },
     increaseHeight() {
       this.containerHeight += 25;
     },
@@ -96,10 +103,29 @@ export default {
       for (let i = 0; i < data.results.length; i++) {
         const element = data.results[i];
         const title = element.title;
+        const releaseDate = element.release_date;
+        const producer = element.producer;
+        const openingCrawl = element.opening_crawl;
+        const characters = element.characters;
         const src = this.films[i].src;
-        this.fetchedFilms.push({ src, title });
-        this.movies.push({ src, title });
+        this.fetchedFilms.push({
+          src,
+          title,
+          releaseDate,
+          producer,
+          openingCrawl,
+          characters,
+        });
+        this.movies.push({
+          src,
+          title,
+          releaseDate,
+          producer,
+          openingCrawl,
+          characters,
+        });
       }
+      console.log(this.movies);
       this.$emit("update:movies", this.movies);
     } catch (error) {
       console.log(error);
@@ -110,6 +136,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "./style/styles.scss";
+
 h3,
 p {
   color: black;
@@ -120,6 +147,7 @@ p {
 .movieList-title {
   font-size: 3em;
 }
+
 .movieListContainer {
   display: flex;
   flex-wrap: wrap;
@@ -159,6 +187,7 @@ p {
         color: white;
       }
     }
+    /*
     &:hover {
       -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
         2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
@@ -166,25 +195,7 @@ p {
         5px 5px 15px 5px rgba(0, 0, 0, 0);
       transform: scale(1.1);
     }
-    .card-button {
-      margin-top: 2.5em;
-      .read-more {
-        font-size: 1.2em;
-        padding: 0.7em;
-        border-radius: 1em;
-        background: rgba(31, 135, 255, 0.7);
-        color: white;
-        &:hover {
-          -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
-            2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-          box-shadow: inset -1px 3px 8px 5px #1f87ff, 2px 5px 16px 0px #0b325e,
-            5px 5px 15px 5px rgba(0, 0, 0, 0);
-          transform: scale(1.05);
-          color: white;
-          opacity: 1;
-        }
-      }
-    }
+    */
   }
 }
 @media screen and (min-width: 727px) {

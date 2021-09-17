@@ -40,12 +40,11 @@ export default {
     films: [],
   }),
   mounted() {
-   // this.bigArray.push(this.films, this.characters)
-  }
+    // this.bigArray.push(this.films, this.characters)
+  },
   computed: {
     filteredMovies: function () {
       return this.films.filter((movie) => {
-        console.log(movie.title);
         return movie.title
           .toLowerCase()
           .includes(this.searchValue.toLowerCase());
@@ -87,6 +86,7 @@ p {
   align-items: center;
   justify-content: space-evenly;
   overflow: hidden;
+  border-bottom: solid 2px grey;
   .movieList-card {
     background-color: black;
     display: flex;
