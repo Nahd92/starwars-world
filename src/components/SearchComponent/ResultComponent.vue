@@ -22,7 +22,7 @@
         </div>
       </div>
       <!-- Characters -->
-       <div
+      <div
         class="character-card"
         v-for="character in filterCharacters"
         v-bind:key="character.id"
@@ -41,8 +41,10 @@
       </div>
     </div>
     <movies-list-component v-show="false" v-bind:movies.sync="films" />
-    <character-list-component v-show="false" v-bind:charactersList.sync="characters"/>
-
+    <character-list-component
+      v-show="false"
+      v-bind:charactersList.sync="characters"
+    />
   </div>
 </template>
 
@@ -60,14 +62,10 @@ export default {
   },
   data: () => ({
     films: [],
-    characters:[],
+    characters: [],
   }),
   mounted() {
-<<<<<<< HEAD
     // this.bigArray.push(this.films, this.characters)
-=======
-   // this.bigArray.push(this.films, this.characters)
->>>>>>> 15c6a9621ac5d8db7617756b2d44ee4ed70bb0c4
   },
   computed: {
     filteredMovies: function () {
@@ -77,15 +75,14 @@ export default {
           .includes(this.searchValue.toLowerCase());
       });
     },
-    filterCharacters: function (){
-      return this.characters.filter((character)=>{
+    filterCharacters: function () {
+      return this.characters.filter((character) => {
         console.log(character.name);
         return character.name
-        .toLowerCase()
-        .includes(this.searchValue.toLowerCase());
-      })
-
-    }
+          .toLowerCase()
+          .includes(this.searchValue.toLowerCase());
+      });
+    },
   },
 };
 </script>
