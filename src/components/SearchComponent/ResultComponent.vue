@@ -39,6 +39,9 @@ export default {
   data: () => ({
     films: [],
   }),
+  mounted() {
+   // this.bigArray.push(this.films, this.characters)
+  }
   computed: {
     filteredMovies: function () {
       return this.films.filter((movie) => {
