@@ -1,14 +1,14 @@
 <template>
   <section class="characterList">
     <h2 class="character-title">All Character</h2>
-    <div class="character-container">
+    <div :style="{ height: containerHeight + 'em' }" class="character-container">
       <div
         class="character-card"
         v-for="character in fetchCharacters"
         v-bind:key="character.id"
       >
         <div class="character-img">
-          <img :src="character.src" alt="Helmet" />
+          <img :src="character.characterCover" alt="luke" />
         </div>
         <div class="character-information">
           <h3 class="character-name">{{ character.name }}</h3>
@@ -20,11 +20,24 @@
         </div>
       </div>
     </div>
+   
+    
+    <!--PARENT-->
+     <ShowMore
+       v-on:showMore="increaseHeight()"
+       v-on:showNotMore="setHeightToDefault()"
+
+    /> 
+   
   </section>
 </template>
 <script>
 import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
 export default {
+  components:{
+    ShowMore
+
+  },
   name: "CharacterListComponent",
   data: () => ({
     characterCovers: [
@@ -46,11 +59,47 @@ export default {
       {
         src: require("@/assets/galaxy.jpg"),
       },
+      {
+        src: require("@/assets/luke2.jpg"),
+      },
+      {
+        src: require("@/assets/c-3po.jpeg"),
+      },
+      {
+        src: require("@/assets/r2d2.jpeg"),
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+      },
+      {
+        src: require("@/assets/galaxy.jpg"),
+      },
     ],
-    characterImages: {},
+    
     fetchCharacters: [],
+    
     pages: 1,
+    containerHeight: 32,
+    containerMaxHeight: false,
   }),
+   methods: {
+    increaseHeight() {
+      this.containerHeight += 30;
+    },
+    setHeightToDefault() {
+      this.containerHeight = 32;
+    },
+    containerHeightMax() {
+      if (this.containerHeight >= 100) {
+        this.containerHeight = !this.containerHeight;
+      }
+    },
+   
+   
+  },
   computed: {},
 
   async mounted() {
@@ -76,9 +125,9 @@ export default {
           const name = element.name;
           const birthYear = element.birth_year;
           const eyeColor = element.eye_color;
-          const charactersCover = this.characterCovers[i].src;
+          const characterCover = this.characterCovers[y].src;
           this.fetchCharacters.push({
-            charactersCover,
+            characterCover,
             name,
             birthYear,
             eyeColor,
@@ -92,6 +141,11 @@ export default {
 <style lang="scss" scoped>
 @import "./style/styles.scss";
 
+.next{
+  position: relative;
+
+
+}
 h3,
 p {
   color: black;
@@ -179,6 +233,18 @@ p {
           opacity: 1;
         }
       }
+    }
+  }
+}
+@media screen and (min-width: 727px) {
+}
+
+@media screen and (min-width: 1024px) {
+  .movieListContainer {
+    display: flex;
+
+    .movieList-card {
+      padding: 0.5em;
     }
   }
 }
