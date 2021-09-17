@@ -3,11 +3,7 @@
     <h2 class="movieList-title">All Movies</h2>
     <div :style="{ height: containerHeight + 'em' }" class="movieListContainer">
       <!-- Adding v-for here -->
-      <div
-        class="movieList-card"
-        v-for="film in fetchedFilms"
-        v-bind:key="film.id"
-      >
+      <div class="movieList-card" v-for="film in movies" v-bind:key="film.id">
         <div class="movie-img">
           <!-- Adding src by binding here -->
           <img :src="film.src" alt="Helmet" />
@@ -54,32 +50,25 @@ export default {
     films: [
       {
         src: require("@/assets/galaxy.jpg"),
-        text: "STAR WARS GALAXY OF HEROES",
       },
       {
         src: require("@/assets/luke2.jpg"),
-        text: "STAR WARS GALAXY OF HEROES",
       },
       {
         src: require("@/assets/galaxy.jpg"),
-        text: "STAR WARS GALAXY OF HEROES",
       },
       {
         src: require("@/assets/galaxy.jpg"),
-        text: "STAR WARS GALAXY OF HEROES",
       },
       {
         src: require("@/assets/galaxy.jpg"),
-        text: "STAR WARS GALAXY OF HEROES",
       },
       {
         src: require("@/assets/galaxy.jpg"),
-        text: "STAR WARS GALAXY OF HEROES",
       },
     ],
     containerHeight: 32,
     containerMaxHeight: false,
-    fetchedFilms: [],
   }),
   methods: {
     increaseHeight() {
@@ -103,7 +92,6 @@ export default {
         const element = data.results[i];
         const title = element.title;
         const src = this.films[i].src;
-        this.fetchedFilms.push({ src, title });
         this.movies.push({ src, title });
       }
       this.$emit("update:movies", this.movies);

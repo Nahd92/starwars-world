@@ -38,7 +38,6 @@ export default {
   },
   data: () => ({
     films: [],
-    aEmptyArray: [],
   }),
   computed: {
     filteredMovies: function () {
