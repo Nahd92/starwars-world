@@ -7,7 +7,7 @@
         <li><i class="bx bxl-instagram"></i></li>
       </ul>
     </div>
-    
+    <div class="streck"></div>
     <div class="about">
       <h3>About:</h3>
       <p>
@@ -32,6 +32,7 @@ export default {
 <style lang="scss" scoped>
 @import "./style/styles.scss";
 
+
 .footer {
   
   text-align: center;
@@ -41,7 +42,6 @@ export default {
 .socials {
   padding-top: 3em;
 }
-
 .about {
   text-align: center;
   margin-top: 1em;
@@ -52,7 +52,44 @@ export default {
   justify-content: center;
 }
 .footer ul li i {
+  cursor: pointer;
   font-size: 2em;
   padding: 8px;
 }
+.footer ul li i:hover {
+  box-shadow: 0 0 10px 2px rgba(252, 248, 248, 0.2);
+  border-radius: 80%;
+}
+@media screen and (min-width: 900px) {
+  .footer {
+ display: flex;
+ flex: wrap;
+ justify-content: space-around;
+  background-color: var(--dark-color);
+}
+.socials{
+  flex:70%;
+  padding: 5em;
+}
+.socials ul{
+  display: flex;
+  padding: 1em;
+}
+.socials ul li i{
+  font-size:2em;
+  padding-left: 0.2em;
+}
+.streck{
+  background-color:grey ;
+  width:0.2em;
+  opacity: 50;
+  height: 18em;
+  margin-top:2em;
+}
+.about{
+  padding: 5em;
+  text-align: left;
+}
+}
+
 </style>
