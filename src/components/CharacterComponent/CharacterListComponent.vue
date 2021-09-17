@@ -4,19 +4,24 @@
     <div :style="{ height: containerHeight + 'em' }" class="character-container">
       <div
         class="character-card"
-        v-for="character in fetchCharacters"
+        v-for="(character,index) in fetchCharacters"
         v-bind:key="character.id"
       >
         <div class="character-img">
           <img :src="character.characterCover" alt="luke" />
         </div>
         <div class="character-information">
+          <h2>Name</h2>
           <h3 class="character-name">{{ character.name }}</h3>
+          <span v-show=" textIsVisible==index" >
+          <h2>Birth Year</h2>
           <h3 class="character-age">{{ character.birthYear }}</h3>
+          <h2>Eye color</h2>
           <h3 class="character-eyes">{{ character.eyeColor }}</h3>
+          </span>
         </div>
-        <div class="card-button">
-          <button class="read-more">Reade more</button>
+        <div class="card-button"  >
+          <button v-on:click=" textIsVisible=index " class="read-more">Reade more</button>
         </div>
       </div>
     </div>
@@ -36,6 +41,13 @@ import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
 export default {
   components:{
     ShowMore
+
+  },
+  props:{
+    charactersList:{
+      typ:Array,
+      default: () => [],
+    }
 
   },
   name: "CharacterListComponent",
@@ -80,7 +92,7 @@ export default {
     ],
     
     fetchCharacters: [],
-    
+    textIsVisible:-1,
     pages: 1,
     containerHeight: 32,
     containerMaxHeight: false,
@@ -97,6 +109,14 @@ export default {
         this.containerHeight = !this.containerHeight;
       }
     },
+    showText(Character,index){
+     
+     
+         this.textIsVisible = !this.textIsVisible
+      
+     
+
+    }
    
    
   },
@@ -132,23 +152,32 @@ export default {
             birthYear,
             eyeColor,
           });
+          this.charactersList.push({
+            characterCover,
+            name,
+            birthYear,
+            eyeColor,
+          });
         }
+       
       }
-    } catch (error) {}
+       this.$emit("update:characters",this.charactersList);
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
 </script>
 <style lang="scss" scoped>
 @import "./style/styles.scss";
 
-.next{
-  position: relative;
-
-
-}
 h3,
 p {
   color: black;
+}
+.character-information h2{
+  font-size: 20px;
+  opacity: 0.5;
 }
 
 .character-title {
@@ -171,7 +200,7 @@ p {
     flex-direction: column;
     align-items: center;
     width: 17em;
-    height: 25em;
+    
     margin: 1em 1em;
     border-radius: 0.5em;
     -webkit-box-shadow: 2px 5px 16px 0px #0b325e,
@@ -196,7 +225,7 @@ p {
     .character-information {
       text-align: center;
       width: 100%;
-      margin-top: 2em;
+      margin-top: 1em;
 
       h3 {
         font-size: 1em;
@@ -214,7 +243,9 @@ p {
     }
 
     .card-button {
-      margin-top: 2.5em;
+      cursor: pointer;
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
 
       .read-more {
         font-size: 1.2em;
@@ -240,10 +271,10 @@ p {
 }
 
 @media screen and (min-width: 1024px) {
-  .movieListContainer {
+  .character-container {
     display: flex;
 
-    .movieList-card {
+    .character-card {
       padding: 0.5em;
     }
   }
