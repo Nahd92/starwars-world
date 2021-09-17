@@ -1,33 +1,54 @@
+<!--PARENT -->
+
 <template>
   <div class="search">
     <div class="search-container">
       <div class="input-icons">
         <input
           type="text"
-          v-model="search"
+          v-model="SearchInputField"
           placeholder="Search anything.."
           class="search-input"
+          @keyup.enter="submittingInput"
+          @keyup.esc="clearSearchField"
         />
         <i class="bx bx-search-alt-2 search-icon"> </i>
         <i
           class="bx bx-x cross-icon"
-          v-show="search.length != 0"
+          v-show="searchValue.length != 0"
           @click="clearSearchField"
         ></i>
       </div>
+    </div>
+    <div
+      v-show="SearchInputField !== '' && searchValue !== ''"
+      class="search-result"
+    >
+      <SearchResult :searchValue="searchValue" />
     </div>
   </div>
 </template>
 
 <script>
+import SearchResult from "../SearchComponent/ResultComponent.vue";
+
 export default {
+  components: {
+    SearchResult,
+  },
   name: "SearchComponent",
   data: () => ({
-    search: "",
+    SearchInputField: "",
+    searchValue: "",
   }),
   methods: {
     clearSearchField() {
-      this.search = "";
+      this.SearchInputField = "";
+      this.searchValue = "";
+    },
+    submittingInput(event) {
+      this.searchValue = event.target.value;
+      console.log(this.searchValue);
     },
   },
 };
@@ -35,9 +56,9 @@ export default {
 
 <style lang="scss" scoped>
 .search {
-  height: 5em;
   .search-container {
-    margin-bottom: -4em;
+    height: 5em;
+    margin-bottom: 5em;
     .input-icons {
       display: flex;
       justify-content: center;
@@ -77,7 +98,7 @@ export default {
         font-size: 1.9em;
         position: absolute;
         top: 0;
-        left: 9.5em;
+        left: 0;
         color: #fff;
       }
       .cross-icon {

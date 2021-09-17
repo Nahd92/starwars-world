@@ -8,8 +8,12 @@
     <transition name="fade">
       <div :class="[isExpanded ? 'show-menu' : 'hide']">
         <ul class="nav-list">
-          <li class="nav-item"><a href="#" class="nav-link">Characters</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Movies</a></li>
+          <li class="nav-item">
+            <a href="#characters" class="nav-link">Characters</a>
+          </li>
+          <li class="nav-item">
+            <a href="#movies" class="nav-link">Movies</a>
+          </li>
         </ul>
       </div>
     </transition>

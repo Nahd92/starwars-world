@@ -43,6 +43,12 @@ export default {
   components: {
     ShowMore,
   },
+  props: {
+    movies: {
+      type: Array,
+      default: () => [],
+    },
+  },
   name: "MoviesListComponent",
   data: () => ({
     films: [
@@ -88,23 +94,19 @@ export default {
       }
     },
   },
-  computed: {
-    moveTitle() {
-      return "";
-    },
-  },
   async mounted() {
     const url = "https://swapi.dev/api/films";
     try {
       const response = await fetch(url);
       const data = await response.json();
-
       for (let i = 0; i < data.results.length; i++) {
         const element = data.results[i];
         const title = element.title;
         const src = this.films[i].src;
         this.fetchedFilms.push({ src, title });
+        this.movies.push({ src, title });
       }
+      this.$emit("update:movies", this.movies);
     } catch (error) {
       console.log(error);
     }
@@ -114,27 +116,22 @@ export default {
 
 <style lang="scss" scoped>
 @import "./style/styles.scss";
-
 h3,
 p {
   color: black;
 }
-
 .movieList-title {
   text-align: center;
 }
-
 .movieList-title {
   font-size: 3em;
 }
-
 .movieListContainer {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
   overflow: hidden;
-
   .movieList-card {
     background-color: black;
     display: flex;
@@ -150,29 +147,24 @@ p {
     box-shadow: 2px 5px 16px 0px #0b325e,
       50px 50px 50px 50px rgba(145, 145, 145, 0),
       50px 50px 50px 50px rgba(145, 145, 145, 0);
-
     .movie-img {
       background-color: var(--white-color);
       width: 94%;
       margin: 0.5em 0;
-
       img {
         border-radius: 0.5em;
       }
     }
-
     .movie-information {
       text-align: center;
       width: 100%;
       margin-top: 2em;
-
       h3 {
         font-size: 1em;
         font-weight: normal;
         color: white;
       }
     }
-
     &:hover {
       -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
         2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
@@ -180,17 +172,14 @@ p {
         5px 5px 15px 5px rgba(0, 0, 0, 0);
       transform: scale(1.1);
     }
-
     .card-button {
       margin-top: 2.5em;
-
       .read-more {
         font-size: 1.2em;
         padding: 0.7em;
         border-radius: 1em;
         background: rgba(31, 135, 255, 0.7);
         color: white;
-
         &:hover {
           -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
             2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
@@ -204,26 +193,14 @@ p {
     }
   }
 }
-
 @media screen and (min-width: 727px) {
 }
-
 @media screen and (min-width: 1024px) {
   .movieListContainer {
     display: flex;
-
     .movieList-card {
       padding: 0.5em;
     }
   }
 }
 </style>
-
-
-
-
-
-
-
-
-
