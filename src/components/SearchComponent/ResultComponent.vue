@@ -22,7 +22,7 @@
         </div>
       </div>
       <!-- Characters -->
-       <div
+      <div
         class="character-card"
         v-for="character in filterCharacters"
         v-bind:key="character.id"
@@ -41,8 +41,10 @@
       </div>
     </div>
     <movies-list-component v-show="false" v-bind:movies.sync="films" />
-    <character-list-component v-show="false" v-bind:charactersList.sync="characters"/>
-
+    <character-list-component
+      v-show="false"
+      v-bind:charactersList.sync="characters"
+    />
   </div>
 </template>
 
@@ -60,29 +62,27 @@ export default {
   },
   data: () => ({
     films: [],
-    characters:[],
+    characters: [],
   }),
   mounted() {
-   // this.bigArray.push(this.films, this.characters)
+    // this.bigArray.push(this.films, this.characters)
   },
   computed: {
     filteredMovies: function () {
       return this.films.filter((movie) => {
-        console.log(movie.title);
         return movie.title
           .toLowerCase()
           .includes(this.searchValue.toLowerCase());
       });
     },
-    filterCharacters: function (){
-      return this.characters.filter((character)=>{
+    filterCharacters: function () {
+      return this.characters.filter((character) => {
         console.log(character.name);
         return character.name
-        .toLowerCase()
-        .includes(this.searchValue.toLowerCase());
-      })
-
-    }
+          .toLowerCase()
+          .includes(this.searchValue.toLowerCase());
+      });
+    },
   },
 };
 </script>
@@ -119,6 +119,7 @@ p {
   align-items: center;
   justify-content: space-evenly;
   overflow: hidden;
+  border-bottom: solid 2px grey;
   .movieList-card {
     background-color: black;
     display: flex;
