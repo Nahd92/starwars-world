@@ -21,7 +21,7 @@
           </span>
         </div>
         <div class="card-button"  >
-          <button v-on:click="textIsVisible = index" class="read-more">Reade more</button>
+          <button v-on:click="textIsVisible = index" class="read-more">Read me</button>
         </div>
       </div>
     </div>
@@ -95,11 +95,13 @@ export default {
     ],
     fetchcovers:[],
     fetchCharacters: [],
-    textIsVisible:1,
+    textIsVisible:true,
     pages: 1,
     containerHeight: 32,
     containerMaxHeight: false,
   }),
+ 
+  
    methods: {
     increaseHeight() {
       this.containerHeight += 30;
@@ -123,9 +125,7 @@ export default {
    
    
   },
-  computed: {
-    
-  },
+ 
 
   async mounted() {
     let data = [];
