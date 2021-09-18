@@ -13,7 +13,7 @@
         <div class="character-information">
           <h2>Name</h2>
           <h3 class="character-name">{{ character.name }}</h3>
-          <span v-show=" textIsVisible==index" >
+          <span v-show="textIsVisible == index" >
           <h2>Birth Year</h2>
           <h3 class="character-age">{{ character.birthYear }}</h3>
           <h2>Eye color</h2>
@@ -21,7 +21,7 @@
           </span>
         </div>
         <div class="card-button"  >
-          <button v-on:click=" textIsVisible=index " class="read-more">Reade more</button>
+          <button v-on:click="textIsVisible = index" class="read-more">Reade more</button>
         </div>
       </div>
     </div>
@@ -33,14 +33,17 @@
        v-on:showNotMore="setHeightToDefault()"
 
     /> 
+    
    
   </section>
 </template>
 <script>
+
 import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
 export default {
   components:{
-    ShowMore
+    ShowMore,
+   
 
   },
   props:{
@@ -57,31 +60,31 @@ export default {
         src: require("@/assets/luke2.jpg"),
       },
       {
-        src: require("@/assets/c-3po.jpeg"),
+        src: require("@/assets/character/c-3po.jpeg"),
       },
       {
-        src: require("@/assets/r2d2.jpeg"),
+        src: require("@/assets/character/r2d2.jpeg"),
       },
       {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/character/darthVader.jpg"),
       },
       {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/character/leia.jpg"),
       },
       {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/character/owenLars.jpg"),
       },
       {
-        src: require("@/assets/luke2.jpg"),
+        src: require("@/assets/character/beruWhitnesun.jpg"),
       },
       {
-        src: require("@/assets/c-3po.jpeg"),
+        src: require("@/assets/character/r5-d4.jpeg"),
       },
       {
-        src: require("@/assets/r2d2.jpeg"),
+        src: require("@/assets/character/biggsDarklighter.jpeg"),
       },
       {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/character/obi-wan.jpg"),
       },
       {
         src: require("@/assets/galaxy.jpg"),
@@ -90,9 +93,9 @@ export default {
         src: require("@/assets/galaxy.jpg"),
       },
     ],
-    
+    fetchcovers:[],
     fetchCharacters: [],
-    textIsVisible:-1,
+    textIsVisible:1,
     pages: 1,
     containerHeight: 32,
     containerMaxHeight: false,
@@ -109,18 +112,20 @@ export default {
         this.containerHeight = !this.containerHeight;
       }
     },
-    showText(Character,index){
+    showText(){
      
-     
+        console.log("den körs",)
          this.textIsVisible = !this.textIsVisible
-      
-     
 
-    }
+
+    },
+    
    
    
   },
-  computed: {},
+  computed: {
+    
+  },
 
   async mounted() {
     let data = [];
