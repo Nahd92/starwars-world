@@ -9,7 +9,6 @@
         v-bind:key="film.id"
       >
         <div class="movie-img">
-          gooliga
           <!-- Adding src by binding here -->
           <img :src="film.src" alt="Helmet" />
         </div>
@@ -48,6 +47,10 @@ export default {
     ShowMore,
   },
   props: {
+    movie: {
+      type: Object,
+      default: () => ({}),
+    },
     movies: {
       type: Array,
       default: () => [],
@@ -107,7 +110,9 @@ export default {
         const producer = element.producer;
         const openingCrawl = element.opening_crawl;
         const characters = element.characters;
+
         const src = this.films[i].src;
+
         this.fetchedFilms.push({
           src,
           title,
@@ -125,7 +130,6 @@ export default {
           characters,
         });
       }
-      console.log(this.movies);
       this.$emit("update:movies", this.movies);
     } catch (error) {
       console.log(error);

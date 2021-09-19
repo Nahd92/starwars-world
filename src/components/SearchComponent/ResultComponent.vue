@@ -64,9 +64,6 @@ export default {
     films: [],
     characters: [],
   }),
-  mounted() {
-    // this.bigArray.push(this.films, this.characters)
-  },
   computed: {
     filteredMovies: function () {
       return this.films.filter((movie) => {
@@ -77,7 +74,6 @@ export default {
     },
     filterCharacters: function () {
       return this.characters.filter((character) => {
-        console.log(character.name);
         return character.name
           .toLowerCase()
           .includes(this.searchValue.toLowerCase());
