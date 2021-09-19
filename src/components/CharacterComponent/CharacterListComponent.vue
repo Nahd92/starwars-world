@@ -25,16 +25,12 @@
         </div>
         <div class="card-button">
           <button v-on:click="textIsVisible = index" class="read-more">
-            Reade more
+            Read me
           </button>
         </div>
       </div>
     </div>
 
-    <!--PARENT-->
-    <ShowMore
-      v-on:showMore="increaseHeight()"
-      v-on:showNotMore="setHeightToDefault()"
     />
   </section>
 </template>
@@ -57,31 +53,31 @@ export default {
         src: require("@/assets/luke2.jpg"),
       },
       {
-        src: require("@/assets/c-3po.jpeg"),
+        src: require("@/assets/character/c-3po.jpeg"),
       },
       {
-        src: require("@/assets/r2d2.jpeg"),
+        src: require("@/assets/character/r2d2.jpeg"),
       },
       {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/character/darthVader.jpg"),
       },
       {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/character/leia.jpg"),
       },
       {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/character/owenLars.jpg"),
       },
       {
-        src: require("@/assets/luke2.jpg"),
+        src: require("@/assets/character/beruWhitnesun.jpg"),
       },
       {
-        src: require("@/assets/c-3po.jpeg"),
+        src: require("@/assets/character/r5-d4.jpeg"),
       },
       {
-        src: require("@/assets/r2d2.jpeg"),
+        src: require("@/assets/character/biggsDarklighter.jpeg"),
       },
       {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/character/obi-wan.jpg"),
       },
       {
         src: require("@/assets/galaxy.jpg"),
@@ -90,14 +86,15 @@ export default {
         src: require("@/assets/galaxy.jpg"),
       },
     ],
-
+    fetchcovers: [],
     fetchCharacters: [],
-    textIsVisible: -1,
+    textIsVisible: true,
     pages: 1,
     containerHeight: 32,
     containerMaxHeight: false,
     charactersObject: [],
   }),
+
   methods: {
     increaseHeight() {
       this.containerHeight += 30;
@@ -110,11 +107,11 @@ export default {
         this.containerHeight = !this.containerHeight;
       }
     },
-    showText(Character, index) {
+    showText() {
+      console.log("den körs");
       this.textIsVisible = !this.textIsVisible;
     },
   },
-  computed: {},
 
   async created() {
     let data = [];
