@@ -88,12 +88,10 @@ export default {
 
 <style lang="scss" scoped>
 @import "./style/styles.scss";
-
 h3,
 p {
   color: black;
 }
-
 .SearchResult-title {
   text-align: center;
   font-size: 2em;
@@ -105,7 +103,6 @@ p {
 .movieList-title {
   font-size: 3em;
 }
-
 .searchResult-container {
   height: 50vh;
   color: red;
@@ -177,11 +174,9 @@ p {
     }
   }
 }
-
 .character-title {
   text-align: center;
 }
-
 .character-title {
   font-size: 3em;
 }
@@ -191,7 +186,6 @@ p {
   align-items: center;
   justify-content: space-evenly;
   overflow: hidden;
-
   .character-card {
     background-color: black;
     display: flex;
@@ -207,31 +201,26 @@ p {
     box-shadow: 2px 5px 16px 0px #0b325e,
       50px 50px 50px 50px rgba(145, 145, 145, 0),
       50px 50px 50px 50px rgba(145, 145, 145, 0);
-
     .character-img {
       background-color: var(--white-color);
       width: 94%;
       margin: 0.5em 0;
-
       img {
         border-radius: 0.5em;
         width: 17em;
         height: 11em;
       }
     }
-
     .character-information {
       text-align: center;
       width: 100%;
       margin-top: 2em;
-
       h3 {
         font-size: 1em;
         font-weight: normal;
         color: white;
       }
     }
-
     &:hover {
       -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
         2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
@@ -239,17 +228,14 @@ p {
         5px 5px 15px 5px rgba(0, 0, 0, 0);
       transform: scale(1.1);
     }
-
     .card-button {
       margin-top: 2.5em;
-
       .read-more {
         font-size: 1.2em;
         padding: 0.7em;
         border-radius: 1em;
         background: rgba(31, 135, 255, 0.7);
         color: white;
-
         &:hover {
           -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
             2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
@@ -263,7 +249,6 @@ p {
     }
   }
 }
-
 @media screen and (min-width: 727px) {
 }
 @media screen and (min-width: 1024px) {

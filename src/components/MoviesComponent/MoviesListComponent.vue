@@ -110,9 +110,7 @@ export default {
         const producer = element.producer;
         const openingCrawl = element.opening_crawl;
         const characters = element.characters;
-
         const src = this.films[i].src;
-
         this.fetchedFilms.push({
           src,
           title,
@@ -140,7 +138,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "./style/styles.scss";
-
 h3,
 p {
   color: black;
@@ -151,7 +148,6 @@ p {
 .movieList-title {
   font-size: 3em;
 }
-
 .movieListContainer {
   display: flex;
   flex-wrap: wrap;
