@@ -13,15 +13,10 @@
         <div class="character-information">
           <h2>Name</h2>
           <h3 class="character-name">{{ character.name }}</h3>
-          <span v-show="textIsVisible == index" >
-          <h2>Birth Year</h2>
-          <h3 class="character-age">{{ character.birthYear }}</h3>
-          <h2>Eye color</h2>
-          <h3 class="character-eyes">{{ character.eyeColor }}</h3>
-          </span>
+         
         </div>
         <div class="card-button"  >
-          <button v-on:click="textIsVisible = index" class="read-more">Read me</button>
+          <Modal :charactersList="charactersList[index]"/>
         </div>
       </div>
     </div>
@@ -38,11 +33,12 @@
   </section>
 </template>
 <script>
-
+import Modal from "../ModalComponent/ModalCharacter.vue"
 import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
 export default {
   components:{
     ShowMore,
+    Modal
    
 
   },
@@ -150,6 +146,8 @@ export default {
           const name = element.name;
           const birthYear = element.birth_year;
           const eyeColor = element.eye_color;
+          const movies = element.films
+         
           const characterCover = this.characterCovers[y].src;
           this.fetchCharacters.push({
             characterCover,
@@ -161,11 +159,14 @@ export default {
             characterCover,
             name,
             birthYear,
-            eyeColor,
+            eyeColor,movies
           });
+         
+          
         }
-       
+        
       }
+     
        this.$emit("update:characters",this.charactersList);
     } catch (error) {
       console.log(error);
@@ -238,6 +239,7 @@ p {
         color: white;
       }
     }
+    /*
 
     &:hover {
       -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
@@ -245,7 +247,7 @@ p {
       box-shadow: inset -1px 3px 8px 5px #1f87ff, 2px 5px 16px 0px #0b325e,
         5px 5px 15px 5px rgba(0, 0, 0, 0);
       transform: scale(1.1);
-    }
+    }*/
 
     .card-button {
       cursor: pointer;
@@ -258,7 +260,7 @@ p {
         border-radius: 1em;
         background: rgba(31, 135, 255, 0.7);
         color: white;
-
+         
         &:hover {
           -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
             2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
