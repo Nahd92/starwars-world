@@ -1,10 +1,13 @@
 <template>
   <section class="characterList">
     <h2 class="character-title">All Character</h2>
-    <div :style="{ height: containerHeight + 'em' }" class="character-container">
+    <div
+      :style="{ height: containerHeight + 'em' }"
+      class="character-container"
+    >
       <div
         class="character-card"
-        v-for="(character,index) in fetchCharacters"
+        v-for="(character, index) in fetchCharacters"
         v-bind:key="character.id"
       >
         <div class="character-img">
@@ -20,34 +23,25 @@
         </div>
       </div>
     </div>
-   
-    
-    <!--PARENT-->
-     <ShowMore
-       v-on:showMore="increaseHeight()"
-       v-on:showNotMore="setHeightToDefault()"
 
-    /> 
-    
-   
+    />
   </section>
 </template>
 <script>
 import Modal from "../ModalComponent/ModalCharacter.vue"
 import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
 export default {
-  components:{
+  components: {
     ShowMore,
     Modal
    
 
   },
-  props:{
-    charactersList:{
-      typ:Array,
+  props: {
+    charactersList: {
+      type: Array,
       default: () => [],
-    }
-
+    },
   },
   name: "CharacterListComponent",
   data: () => ({
@@ -89,16 +83,16 @@ export default {
         src: require("@/assets/galaxy.jpg"),
       },
     ],
-    fetchcovers:[],
+    fetchcovers: [],
     fetchCharacters: [],
-    textIsVisible:true,
+    textIsVisible: true,
     pages: 1,
     containerHeight: 32,
     containerMaxHeight: false,
+    charactersObject: [],
   }),
- 
-  
-   methods: {
+
+  methods: {
     increaseHeight() {
       this.containerHeight += 30;
     },
@@ -110,37 +104,28 @@ export default {
         this.containerHeight = !this.containerHeight;
       }
     },
-    showText(){
-     
-        console.log("den körs",)
-         this.textIsVisible = !this.textIsVisible
-
-
+    showText() {
+      console.log("den körs");
+      this.textIsVisible = !this.textIsVisible;
     },
-    
-   
-   
   },
- 
 
-  async mounted() {
+  async created() {
     let data = [];
     try {
       do {
-        const pages = `https://swapi.dev/api/people/?page=${this.pages}`;
-        const response = await fetch(pages);
+        const url = `https://swapi.dev/api/people/?page=${this.pages}`;
+        const response = await fetch(url);
         data.push(await response.json());
         this.pages++;
       } while (this.pages <= 9);
 
-      let charactersObject = [];
-
       for (let i = 0; i < data.length; i++) {
-        charactersObject.push(data[i].results);
+        this.charactersObject.push(data[i].results);
       }
 
-      for (let i = 0; i < charactersObject.length; i++) {
-        let charactersArray = charactersObject[i];
+      for (let i = 0; i < this.charactersObject.length; i++) {
+        let charactersArray = this.charactersObject[i];
         for (let y = 0; y < charactersArray.length; y++) {
           const element = charactersArray[y];
           const name = element.name;
@@ -181,7 +166,7 @@ h3,
 p {
   color: black;
 }
-.character-information h2{
+.character-information h2 {
   font-size: 20px;
   opacity: 0.5;
 }
@@ -206,7 +191,7 @@ p {
     flex-direction: column;
     align-items: center;
     width: 17em;
-    
+
     margin: 1em 1em;
     border-radius: 0.5em;
     -webkit-box-shadow: 2px 5px 16px 0px #0b325e,

@@ -32,26 +32,38 @@
         </div>
 
         <div class="closebtn">
-          <a class="modal-button" @click="doNotshowModal">CLOSE MODAL</a>
+          <a class="modal-button" @click="doNotshowModal">CLOSE </a>
         </div>
       </div>
     </transition>
+
+    <character-list-component
+      v-show="false"
+      v-bind:charactersList.sync="characters"
+    />
   </div>
 </template>
 
 
 <script>
+import CharacterListComponent from "../CharacterComponent/CharacterListComponent.vue";
 export default {
+  components: {
+    CharacterListComponent,
+  },
   props: {
     movie: {
       type: Object,
+      default: () => ({}),
+    },
+    characters: {
+      type: Array,
       default: () => [],
     },
   },
   name: "ModalComponent",
   data: () => ({
     showModal: false,
-    Movies: [],
   }),
   methods: {
     doShowModal() {
