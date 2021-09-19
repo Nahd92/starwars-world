@@ -16,26 +16,26 @@
         <div class="character-information">
           <h2>Name</h2>
           <h3 class="character-name">{{ character.name }}</h3>
-         
         </div>
-        <div class="card-button"  >
-          <Modal :charactersList="charactersList[index]"/>
+        <div class="card-button">
+          <Modal :charactersList="charactersList[index]" />
         </div>
       </div>
     </div>
-
+    <!--PARENT-->
+    <ShowMore
+      v-on:showMore="increaseHeight()"
+      v-on:showNotMore="setHeightToDefault()"
     />
   </section>
 </template>
 <script>
-import Modal from "../ModalComponent/ModalCharacter.vue"
+import Modal from "../ModalComponent/ModalCharacter.vue";
 import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
 export default {
   components: {
     ShowMore,
-    Modal
-   
-
+    Modal,
   },
   props: {
     charactersList: {
@@ -131,8 +131,8 @@ export default {
           const name = element.name;
           const birthYear = element.birth_year;
           const eyeColor = element.eye_color;
-          const movies = element.films
-         
+          const movies = element.films;
+
           const characterCover = this.characterCovers[y].src;
           this.fetchCharacters.push({
             characterCover,
@@ -144,15 +144,13 @@ export default {
             characterCover,
             name,
             birthYear,
-            eyeColor,movies
+            eyeColor,
+            movies,
           });
-         
-          
         }
-        
       }
-     
-       this.$emit("update:characters",this.charactersList);
+
+      this.$emit("update:characters", this.charactersList);
     } catch (error) {
       console.log(error);
     }
@@ -245,7 +243,7 @@ p {
         border-radius: 1em;
         background: rgba(31, 135, 255, 0.7);
         color: white;
-         
+
         &:hover {
           -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
             2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
