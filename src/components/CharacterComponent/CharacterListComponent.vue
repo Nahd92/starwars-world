@@ -193,7 +193,7 @@ p {
     align-items: center;
     width: 14em;
     height: 25em;
-    margin: 1em 1em;
+    margin: 1em 0.5em;
     border-radius: 0.5em;
     -webkit-box-shadow: 2px 5px 16px 0px #0b325e,
       50px 50px 50px 50px rgba(145, 145, 145, 0),
