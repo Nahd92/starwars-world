@@ -132,8 +132,9 @@ export default {
           const birthYear = element.birth_year;
           const eyeColor = element.eye_color;
           const movies = element.films;
-
+          const url = element.url;
           const characterCover = this.characterCovers[y].src;
+
           this.fetchCharacters.push({
             characterCover,
             name,
@@ -146,6 +147,7 @@ export default {
             birthYear,
             eyeColor,
             movies,
+            url,
           });
         }
       }
