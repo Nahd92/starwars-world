@@ -13,17 +13,43 @@
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <div class="header">
-          <div class="image">
-            <img :src="movie.src" alt="the movies image" class="modal-image" />
+          <div class="image-container">
+            <div class="image">
+              <img
+                :src="movie.src"
+                alt="the movies image"
+                class="modal-image"
+              />
+            </div>
           </div>
-          <div class="header-info">
-            <h3>Title:</h3>
-            <p>{{ movie.title }}</p>
-            <h3>Producer:</h3>
-            <p>{{ movie.producer }}</p>
-            <h3>Released:</h3>
-            <p>{{ movie.releaseDate }}</p>
+          <div class="headerInfo">
+            <div class="header-info">
+              <h3>Title:</h3>
+              <p>{{ movie.title }}</p>
+              <h3>Producer:</h3>
+              <p>{{ movie.producer }}</p>
+              <h3>Released:</h3>
+              <p>{{ movie.releaseDate }}</p>
+            </div>
           </div>
+        </div>
+
+        <h3 class="chars-title">Characters in the Movie</h3>
+        <div class="characters-container">
+          <div
+            class="characters"
+            v-for="character in filterAllCharacters"
+            v-bind:key="character.id"
+          >
+            <div class="char-card-img">
+              <img :src="character.characterCover" alt="character in movie" />
+            </div>
+          </div>
+        </div>
+
+        <div class="images-carousell-arrows">
+          <i class="bx bx-left-arrow-alt arrow-icon"></i>
+          <i class="bx bx-right-arrow-alt arrow-icon"></i>
         </div>
 
         <div class="description-part">
@@ -64,6 +90,7 @@ export default {
   name: "ModalComponent",
   data: () => ({
     showModal: false,
+    movieCharacters: [],
   }),
   methods: {
     doShowModal() {
@@ -71,6 +98,16 @@ export default {
     },
     doNotshowModal() {
       this.showModal = false;
+    },
+  },
+  computed: {
+    filterAllCharacters: function () {
+      return this.characters.filter((char) => {
+        return this.movie.characters.find((movieCharUrl) => {
+          //console.log("FilterAllCharacters, Modal", movieCharUrl, char.url);
+          return movieCharUrl === char.url;
+        });
+      });
     },
   },
 };
@@ -143,10 +180,10 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99;
-  height: 80vh;
+  height: 75vh;
   width: 100%;
   padding: 25px;
-  max-width: 800px;
+  max-width: 1000px;
   background-color: var(--dark-color);
   border-radius: 16px;
 
@@ -157,38 +194,35 @@ export default {
     50px 50px 50px 50px rgba(145, 145, 145, 0),
     50px 50px 50px 50px rgba(145, 145, 145, 0);
 
-  .image {
-    width: 100%;
-
-    .modal-image {
-      width: 100%;
-    }
-  }
-
   .header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .image-container {
+      width: 30%;
+    }
 
     .header-info {
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+
       width: 100%;
       padding: 0 2em;
-      height: 12.6em;
+      height: 10.6em;
       h3,
       p {
         color: white;
       }
 
       p {
-        font-size: 0.7;
+        font-size: 0.5;
       }
     }
   }
   .description-part {
     height: 20em;
-    margin-top: 3em;
+    margin-top: 1em;
 
     .description-title {
       color: white;
@@ -196,8 +230,45 @@ export default {
 
     .description {
       color: white;
-      padding: 2em;
+      padding: 0em;
       line-height: 2em;
+    }
+  }
+
+  .chars-title {
+    color: var(--white-color);
+    text-align: center;
+    margin: 1em 0;
+  }
+
+  .characters-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    white-space: nowrap;
+    overflow: hidden;
+
+    .characters {
+      width: 100%;
+      .char-card-img {
+        width: 10em;
+        margin: 0 0.4em;
+      }
+    }
+  }
+  .images-carousell-arrows {
+    text-align: center;
+    font-size: 2em;
+    color: grey;
+    cursor: pointer;
+
+    .arrow-icon {
+      padding: 0 0.3em;
+
+      &:hover {
+        color: white;
+        transform: scale(1.1);
+      }
     }
   }
 
