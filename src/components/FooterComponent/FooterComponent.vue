@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="socials">
-      <p>STAR WARS WORLD SOCIAL:</p>
+      <p>STAR WARS WORLD SOCIALS:</p>
       <ul>
         <li><i class="bx bxl-facebook-circle"></i></li>
         <li><i class="bx bxl-instagram"></i></li>
@@ -11,13 +11,8 @@
     <div class="about">
       <h3>About:</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        We are 2 students Dhan and Luisa who are in their final year of newton competence education. During one of our courses' development of web applications. We were given a task of creating a vue app that uses the star wars api to retrieve information to the user. Our goal was to create a user friendly page for our star wars nerds where they can easily find information on various characters or movies.
+
       </p>
     </div>
   </footer>

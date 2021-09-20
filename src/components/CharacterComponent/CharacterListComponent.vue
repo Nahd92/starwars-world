@@ -19,6 +19,13 @@
         </div>
       </div>
     </div>
+     <ShowMore
+    
+      v-on:showMore="increaseHeight()"
+      v-on:showNotMore="setHeightToDefault()"
+    
+      
+    />
 
     <div class="show-more-cont characters-more-cont">
       <!--PARENT-->
@@ -100,7 +107,7 @@ export default {
       this.containerHeight = 32;
     },
     containerHeightMax() {
-      if (this.containerHeight >= 100) {
+      if (this.containerHeight >= 800) {
         this.containerHeight = !this.containerHeight;
       }
     },
@@ -151,8 +158,10 @@ export default {
           });
         }
       }
+      
 
-      this.$emit("update:characters", this.charactersList);
+     
+       this.$emit("update:characters",this.charactersList);
     } catch (error) {
       console.log(error);
     }
