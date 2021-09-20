@@ -47,6 +47,7 @@ export default {
       type: Object,
       default: () => [],
     },
+   
   },
   
   name: "ModalComponent",
@@ -63,22 +64,7 @@ export default {
       this.showModal = false;
     },
   },
-  async mounted (){
-      for(let i = 0; i<this.charactersList.movies.length; i++)
-      {
-         const response = await fetch(this.charactersList.movies[i])
-         const data = await response.json()
-         this.films = data.title
-         console.log("filmer??",this.films)
-          
-
-
-      }
-  }
-  
-     
-     
-           
+       
       
    
 };
