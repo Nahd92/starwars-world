@@ -19,13 +19,7 @@
         </div>
       </div>
     </div>
-     <ShowMore
-    
-      v-on:showMore="increaseHeight()"
-      v-on:showNotMore="setHeightToDefault()"
-    
-      
-    />
+     
 
     <div class="show-more-cont characters-more-cont">
       <!--PARENT-->
@@ -49,6 +43,7 @@ export default {
       type: Array,
       default: () => [],
     },
+   
   },
   name: "CharacterListComponent",
   data: () => ({
@@ -94,17 +89,22 @@ export default {
     fetchCharacters: [],
     textIsVisible: true,
     pages: 1,
-    containerHeight: 32,
+    containerHeight: 60,
     containerMaxHeight: false,
     charactersObject: [],
   }),
 
   methods: {
     increaseHeight() {
-      this.containerHeight += 30;
+      if (this.containerHeight >=500)
+      {
+        this.containerHeight = 500;
+      }
+      else
+      this.containerHeight += 55;
     },
     setHeightToDefault() {
-      this.containerHeight = 32;
+      this.containerHeight = 60;
     },
     containerHeightMax() {
       if (this.containerHeight >= 800) {
@@ -179,6 +179,87 @@ p {
 }
 .characters-more-cont {
   margin-bottom: 0;
+}
+
+.card-container {
+	height: 100vh;
+	color: red;
+	margin-bottom: 1em;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-evenly;
+	overflow: hidden;
+
+	.card {
+		background-color: black;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 15em;
+		height: 25em;
+		margin: 1em 1em;
+		border-radius: 0.5em;
+		-webkit-box-shadow: 2px 5px 16px 0px #0b325e,
+			50px 50px 50px 50px rgba(145, 145, 145, 0),
+			50px 50px 50px 50px rgba(145, 145, 145, 0);
+		box-shadow: 2px 5px 16px 0px #0b325e,
+			50px 50px 50px 50px rgba(145, 145, 145, 0),
+			50px 50px 50px 50px rgba(145, 145, 145, 0);
+
+		.card-img {
+			background-color: var(--white-color);
+			width: 94%;
+      
+			margin: 0.5em 0;
+
+			img {
+        height: 10em;
+        width: 100%;
+				border-radius: 0.5em;
+			}
+		}
+
+		.card-information {
+			text-align: center;
+			width: 100%;
+			margin-top: 2em;
+
+			h3 {
+				font-size: 1em;
+				font-weight: normal;
+				color: white;
+			}
+		}
+
+		&:hover {
+			-webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
+				2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+			box-shadow: inset -1px 3px 8px 5px #1f87ff, 2px 5px 16px 0px #0b325e,
+				5px 5px 15px 5px rgba(0, 0, 0, 0);
+			transition: 1.2s;
+		}
+
+		.card-button {
+
+			.read-more {
+				font-size: 1.2em;
+				padding: 0.7em;
+				background: rgba(31, 135, 255, 0.7);
+				color: white;
+
+				&:hover {
+					-webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
+						2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+					box-shadow: inset -1px 3px 8px 5px #1f87ff, 2px 5px 16px 0px #0b325e,
+						5px 5px 15px 5px rgba(0, 0, 0, 0);
+					transform: scale(1.05);
+					color: white;
+					opacity: 1;
+				}
+			}
+		}
+	}
 }
 
 @media screen and (min-width: 727px) {

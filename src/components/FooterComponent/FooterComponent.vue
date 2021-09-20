@@ -11,7 +11,7 @@
     <div class="about">
       <h3>About:</h3>
       <p>
-        We are 2 students Dhan and Luisa who are in their final year of newton competence education. During one of our courses' development of web applications. We were given a task of creating a vue app that uses the star wars api to retrieve information to the user. Our goal was to create a user friendly page for our star wars nerds where they can easily find information on various characters or movies.
+        We are 2 students Dhan and Luisa who are in their final year of newton competence education .NET program. During one of our courses' development of web applications. We were given a task of creating a vue app that uses the star wars api to retrieve information to the user. Our goal was to create a user friendly page for our star wars nerds where they can easily find information on various characters or movies.
 
       </p>
     </div>
