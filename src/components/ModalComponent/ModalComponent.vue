@@ -35,7 +35,8 @@
         </div>
 
         <h3 class="chars-title">Characters in the Movie</h3>
-        <div class="characters-container">
+
+        <transition-group name="fade" tag="div">
           <div
             class="characters"
             v-for="character in filterAllCharacters"
@@ -45,11 +46,19 @@
               <img :src="character.characterCover" alt="character in movie" />
             </div>
           </div>
-        </div>
+        </transition-group>
 
         <div class="images-carousell-arrows">
-          <i class="bx bx-left-arrow-alt arrow-icon"></i>
-          <i class="bx bx-right-arrow-alt arrow-icon"></i>
+          <i
+            class="bx bx-left-arrow-alt arrow-icon"
+            v-bind:disabled="currentIndex < 1"
+            @click="prev"
+          ></i>
+          <i
+            class="bx bx-right-arrow-alt arrow-icon"
+            v-bind:disabled="currentIndex == movie.characters.length - 1"
+            @click="next"
+          ></i>
         </div>
 
         <div class="description-part">
@@ -91,6 +100,8 @@ export default {
   data: () => ({
     showModal: false,
     movieCharacters: [],
+    transitionSlide: "",
+    currentIndex: 0,
   }),
   methods: {
     doShowModal() {
@@ -98,6 +109,18 @@ export default {
     },
     doNotshowModal() {
       this.showModal = false;
+    },
+    next() {
+      if (this.currentIndex < 3) {
+        console.log("next");
+        this.currentIndex += 1;
+      } else {
+        this.currentIndex = 0;
+      }
+    },
+    prev() {
+      console.log("prev");
+      this.currentIndex -= 1;
     },
   },
   computed: {
@@ -108,6 +131,11 @@ export default {
           return movieCharUrl === char.url;
         });
       });
+    },
+    currentImg() {
+      return this.movie.characters[
+        Math.abs(this.currentIndex) % this.movie.characters
+      ];
     },
   },
 };
@@ -241,28 +269,24 @@ export default {
     margin: 1em 0;
   }
 
-  .characters-container {
+  .characters {
     display: flex;
     align-items: center;
     flex-direction: row;
     white-space: nowrap;
     overflow: hidden;
-
-    .characters {
-      width: 100%;
-      .char-card-img {
-        width: 10em;
-        margin: 0 0.4em;
-      }
+    .char-card-img {
+      width: 10em;
+      margin: 0 0.4em;
     }
   }
   .images-carousell-arrows {
     text-align: center;
     font-size: 2em;
     color: grey;
-    cursor: pointer;
 
     .arrow-icon {
+      cursor: pointer;
       padding: 0 0.3em;
 
       &:hover {
