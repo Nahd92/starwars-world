@@ -1,32 +1,32 @@
 <template>
-  <section class="characterList">
-    <h2 class="character-title">All Character</h2>
-    <div
-      :style="{ height: containerHeight + 'em' }"
-      class="character-container"
-    >
+  <section>
+    <h2 class="card-title characters-title">All Character</h2>
+    <div :style="{ height: containerHeight + 'em' }" class="card-container">
       <div
-        class="character-card"
+        class="card"
         v-for="(character, index) in fetchCharacters"
         v-bind:key="character.id"
       >
-        <div class="character-img">
+        <div class="card-img">
           <img :src="character.characterCover" alt="luke" />
         </div>
-        <div class="character-information">
+        <div class="card-information">
           <h2>Name</h2>
-          <h3 class="character-name">{{ character.name }}</h3>
+          <h3 class="card-name">{{ character.name }}</h3>
         </div>
         <div class="card-button">
           <Modal :charactersList="charactersList[index]" />
         </div>
       </div>
     </div>
-    <!--PARENT-->
-    <ShowMore
-      v-on:showMore="increaseHeight()"
-      v-on:showNotMore="setHeightToDefault()"
-    />
+
+    <div class="show-more-cont characters-more-cont">
+      <!--PARENT-->
+      <ShowMore
+        v-on:showMore="increaseHeight()"
+        v-on:showNotMore="setHeightToDefault()"
+      />
+    </div>
   </section>
 </template>
 <script>
@@ -164,99 +164,14 @@ h3,
 p {
   color: black;
 }
-.character-information h2 {
-  font-size: 20px;
-  opacity: 0.5;
+
+.characters-title {
+  margin-top: 1em;
+}
+.characters-more-cont {
+  margin-bottom: 0;
 }
 
-.character-title {
-  text-align: center;
-}
-
-.character-title {
-  font-size: 3em;
-}
-.character-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  overflow: hidden;
-
-  .character-card {
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 17em;
-
-    margin: 1em 1em;
-    border-radius: 0.5em;
-    -webkit-box-shadow: 2px 5px 16px 0px #0b325e,
-      50px 50px 50px 50px rgba(145, 145, 145, 0),
-      50px 50px 50px 50px rgba(145, 145, 145, 0);
-    box-shadow: 2px 5px 16px 0px #0b325e,
-      50px 50px 50px 50px rgba(145, 145, 145, 0),
-      50px 50px 50px 50px rgba(145, 145, 145, 0);
-
-    .character-img {
-      background-color: var(--white-color);
-      width: 94%;
-      margin: 0.5em 0;
-
-      img {
-        border-radius: 0.5em;
-        width: 17em;
-        height: 11em;
-      }
-    }
-
-    .character-information {
-      text-align: center;
-      width: 100%;
-      margin-top: 1em;
-
-      h3 {
-        font-size: 1em;
-        font-weight: normal;
-        color: white;
-      }
-    }
-    /*
-
-    &:hover {
-      -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
-        2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-      box-shadow: inset -1px 3px 8px 5px #1f87ff, 2px 5px 16px 0px #0b325e,
-        5px 5px 15px 5px rgba(0, 0, 0, 0);
-      transform: scale(1.1);
-    }*/
-
-    .card-button {
-      cursor: pointer;
-      margin-top: 1.5em;
-      margin-bottom: 1.5em;
-
-      .read-more {
-        font-size: 1.2em;
-        padding: 0.7em;
-        border-radius: 1em;
-        background: rgba(31, 135, 255, 0.7);
-        color: white;
-
-        &:hover {
-          -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
-            2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-          box-shadow: inset -1px 3px 8px 5px #1f87ff, 2px 5px 16px 0px #0b325e,
-            5px 5px 15px 5px rgba(0, 0, 0, 0);
-          transform: scale(1.05);
-          color: white;
-          opacity: 1;
-        }
-      }
-    }
-  }
-}
 @media screen and (min-width: 727px) {
 }
 
