@@ -191,7 +191,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 15em;
+    width: 14em;
     height: 25em;
     margin: 1em 1em;
     border-radius: 0.5em;
