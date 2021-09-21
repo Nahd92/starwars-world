@@ -11,7 +11,6 @@
           <img :src="character.characterCover" alt="luke" />
         </div>
         <div class="card-information">
-          <h2>Name</h2>
           <h3 class="card-name">{{ character.name }}</h3>
         </div>
         <div class="card-button">
@@ -133,7 +132,6 @@ export default {
           const name = element.name;
           const birthYear = element.birth_year;
           const eyeColor = element.eye_color;
-          const movies = element.films;
           const url = element.url;
           const characterCover = this.characterCovers[y].src;
 
@@ -148,7 +146,6 @@ export default {
             name,
             birthYear,
             eyeColor,
-            movies,
             url,
           });
         }

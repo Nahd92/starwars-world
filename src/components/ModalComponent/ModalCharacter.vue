@@ -30,11 +30,6 @@
           </div>
         </div>
 
-        <div class="description-part">
-          <h3 class="description-title">Movies:</h3>
-          <div class="description">{{ charactersList.movies }}</div>
-        </div>
-
         <div class="closebtn">
           <a class="modal-button" @click="doNotshowCharacterModal"
             >CLOSE MODAL</a
