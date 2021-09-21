@@ -33,5 +33,7 @@ export default {
 .main {
   background-color: var(--dark-color);
   width: 100%;
+  
 }
+
 </style>

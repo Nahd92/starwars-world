@@ -61,22 +61,22 @@ export default {
   data: () => ({
     films: [
       {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/a-new-hope.jpg"),
       },
       {
-        src: require("@/assets/luke2.jpg"),
+        src: require("@/assets/empire.jpg"),
       },
       {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/return-of-jedi.jpg"),
       },
       {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/the-phantom.jpg"),
       },
       {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/attack-of-the-clones.jpg"),
       },
       {
-        src: require("@/assets/galaxy.jpg"),
+        src: require("@/assets/revenge-of.jpg"),
       },
     ],
     containerHeight: 32,
@@ -133,7 +133,7 @@ export default {
       }
       this.$emit("update:movies", this.movies);
     } catch (error) {
-      console.log(error);
+      console.log('error från movieList',error);
     }
   },
 };
@@ -146,7 +146,7 @@ p {
   color: black;
 }
 
-@media screen and (min-width: 727px) {
+@media screen and (max-width: 727px) {
 }
 @media screen and (min-width: 1024px) {
   .movieListContainer {
