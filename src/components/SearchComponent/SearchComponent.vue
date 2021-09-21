@@ -19,6 +19,12 @@
           @click="clearSearchField"
         ></i>
       </div>
+
+      <div class="search-text">
+        <p v-show="textIsShorterthanThree">
+          Atleast 3 characters are required to search, try again!
+        </p>
+      </div>
     </div>
     <div
       v-show="SearchInputField !== '' && searchValue !== ''"
@@ -40,15 +46,22 @@ export default {
   data: () => ({
     SearchInputField: "",
     searchValue: "",
+    textIsShorterthanThree: false,
   }),
   methods: {
     clearSearchField() {
       this.SearchInputField = "";
       this.searchValue = "";
+      this.textIsShorterthanThree = false;
     },
     submittingInput(event) {
-      this.searchValue = event.target.value;
-      console.log(this.searchValue);
+      if (event.target.value.length >= 3) {
+        this.searchValue = event.target.value;
+        this.textIsShorterthanThree = false;
+        console.log(this.searchValue);
+      } else {
+        this.textIsShorterthanThree = true;
+      }
     },
   },
 };

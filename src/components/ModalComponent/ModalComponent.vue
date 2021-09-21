@@ -34,31 +34,19 @@
           </div>
         </div>
 
-        <h3 class="chars-title">Characters in the Movie</h3>
-
-        <transition-group name="fade" tag="div">
-          <div
-            class="characters"
-            v-for="character in filterAllCharacters"
-            v-bind:key="character.id"
-          >
-            <div class="char-card-img">
-              <img :src="character.characterCover" alt="character in movie" />
+        <div class="characters-images">
+          <h3 class="chars-title">Characters in the Movie</h3>
+          <div class="characters-container">
+            <div
+              class="characters"
+              v-for="character in filterAllCharacters"
+              v-bind:key="character.id"
+            >
+              <div class="char-card-img">
+                <img :src="character.characterCover" alt="character in movie" />
+              </div>
             </div>
           </div>
-        </transition-group>
-
-        <div class="images-carousell-arrows">
-          <i
-            class="bx bx-left-arrow-alt arrow-icon"
-            v-bind:disabled="currentIndex < 1"
-            @click="prev"
-          ></i>
-          <i
-            class="bx bx-right-arrow-alt arrow-icon"
-            v-bind:disabled="currentIndex == movie.characters.length - 1"
-            @click="next"
-          ></i>
         </div>
 
         <div class="description-part">
@@ -110,18 +98,6 @@ export default {
     doNotshowModal() {
       this.showModal = false;
     },
-    next() {
-      if (this.currentIndex < 3) {
-        console.log("next");
-        this.currentIndex += 1;
-      } else {
-        this.currentIndex = 0;
-      }
-    },
-    prev() {
-      console.log("prev");
-      this.currentIndex -= 1;
-    },
   },
   computed: {
     filterAllCharacters: function () {
@@ -155,25 +131,6 @@ export default {
   h1,
   h3 {
     color: blacK;
-  }
-}
-.modal-button {
-  font-size: 1.2em;
-  margin-top: 2em;
-  padding: 0.7em;
-  border-radius: 1em;
-  background: rgba(31, 135, 255, 0.7);
-  color: white;
-  cursor: pointer;
-
-  &:hover {
-    -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff, 2px 5px 16px 0px #0b325e,
-      5px 5px 15px 5px rgba(0, 0, 0, 0);
-    box-shadow: inset -1px 3px 8px 5px #1f87ff, 2px 5px 16px 0px #0b325e,
-      5px 5px 15px 5px rgba(0, 0, 0, 0);
-    transform: scale(1.05);
-    color: white;
-    opacity: 1;
   }
 }
 
@@ -224,16 +181,15 @@ export default {
 
   .header {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-
+    justify-content: space-around;
     .image-container {
-      width: 30%;
+      width: 40%;
     }
 
     .header-info {
       display: flex;
       flex-direction: column;
+      align-items: center;
 
       width: 100%;
       padding: 0 2em;
@@ -263,23 +219,32 @@ export default {
     }
   }
 
-  .chars-title {
-    color: var(--white-color);
-    text-align: center;
-    margin: 1em 0;
-  }
+  .characters-images {
+    .chars-title {
+      color: var(--white-color);
+      text-align: center;
+      margin: 1em 0;
+    }
 
-  .characters {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    white-space: nowrap;
-    overflow: hidden;
-    .char-card-img {
-      width: 10em;
-      margin: 0 0.4em;
+    .characters-container {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      overflow: auto;
+      justify-content: flex-start;
+      align-items: center;
+      ::-webkit-scrollbar-track {
+        background-color: #333;
+      }
+    }
+    .characters {
+      .char-card-img {
+        width: 10em;
+        margin: 0em 0.4em;
+      }
     }
   }
+
   .images-carousell-arrows {
     text-align: center;
     font-size: 2em;
@@ -302,5 +267,24 @@ export default {
     right: 0;
     padding: 2.5em;
   }
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 </style>

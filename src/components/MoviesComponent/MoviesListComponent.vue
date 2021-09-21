@@ -19,8 +19,6 @@
         </div>
         <div class="card-button">
           <Modal :movie="movies[index]" />
-        
-
         </div>
       </div>
     </div>
@@ -42,7 +40,6 @@
 </template>
 
 <script>
-
 import Modal from "../ModalComponent/ModalComponent.vue";
 import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
 export default {
@@ -50,7 +47,6 @@ export default {
   components: {
     Modal,
     ShowMore,
-   
   },
   props: {
     movie: {
@@ -131,7 +127,8 @@ export default {
           releaseDate,
           producer,
           openingCrawl,
-          characters,url
+          characters,
+          url,
         });
       }
       this.$emit("update:movies", this.movies);

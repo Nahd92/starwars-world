@@ -2,8 +2,19 @@
 <template>
   <div class="result-comp">
     <h3 class="card-title">Search results</h3>
-    <div class="card-container bd-grid">
-      <div class="card" v-for="film in filteredMovies" v-bind:key="film.id">
+    <div
+      class="card-container result-container bd-grid"
+      :style="{ height: containerHeight + 'em' }"
+    >
+      <p v-if="filteredMovies.length === 0">
+        Could not understand that search, try again!
+      </p>
+      <div
+        v-else
+        class="card"
+        v-for="film in filteredMovies"
+        v-bind:key="film.id"
+      >
         <div class="card-img">
           <!-- Adding src by binding here -->
           <img :src="film.src" alt="Helmet" />
@@ -14,7 +25,7 @@
           </h3>
         </div>
         <div class="card-button">
-          <button class="read-more">Read more!</button>
+          <button class="modal-button">Read more</button>
         </div>
       </div>
       <!-- Characters -->
@@ -32,7 +43,7 @@
           <h3 class="character-eyes">{{ character.eyeColor }}</h3>
         </div>
         <div class="card-button">
-          <button class="read-more">Reade more</button>
+          <button class="modal-button">Read more</button>
         </div>
       </div>
     </div>
@@ -42,7 +53,19 @@
       v-bind:charactersList.sync="characters"
     />
 
-    <show-more />
+    <!--PARENT-->
+    <div class="show-more-cont">
+      <ShowMore
+        v-show="containerHeight <= 80"
+        v-if="containerHeight <= 32"
+        v-on:showMore="increaseHeight()"
+      />
+      <ShowMore
+        v-else
+        aria-disabled="true"
+        v-on:showNotMore="setHeightToDefault()"
+      />
+    </div>
   </div>
 </template>
 
@@ -63,8 +86,25 @@ export default {
   data: () => ({
     films: [],
     characters: [],
-    newBigArray: [],
+    containerHeight: 32,
+    containerMaxHeight: false,
   }),
+  methods: {
+    toggleCardHover() {
+      this.cardHover = !this.cardHover;
+    },
+    increaseHeight() {
+      this.containerHeight += 25;
+    },
+    setHeightToDefault() {
+      this.containerHeight = 32;
+    },
+    containerHeightMax() {
+      if (this.containerHeight >= 82) {
+        this.containerHeightMax = !this.containerHeight;
+      }
+    },
+  },
   mounted() {
     for (let i = 0; i < this.characters.length; i++) {
       const element = this.characters[i];
@@ -100,15 +140,12 @@ h3,
 p {
   color: white;
 }
+.result-container {
+  height: 50vh;
+}
 
 @media screen and (min-width: 727px) {
 }
 @media screen and (min-width: 1024px) {
-  .movieListContainer {
-    display: flex;
-    .movieList-card {
-      padding: 0.5em;
-    }
-  }
 }
 </style>
