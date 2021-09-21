@@ -45,7 +45,9 @@
               <div class="char-card-img">
                 <img :src="character.characterCover" alt="character in movie" />
                 <div class="read-more-container">
-                  <CharacterModal :charactersList="characters[index]" />
+                  <CharacterModal
+                    :charactersList="filterAllCharacters[index]"
+                  />
                 </div>
               </div>
             </div>
