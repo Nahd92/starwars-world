@@ -39,11 +39,14 @@
           <div class="characters-container">
             <div
               class="characters"
-              v-for="character in filterAllCharacters"
+              v-for="(character, index) in filterAllCharacters"
               v-bind:key="character.id"
             >
               <div class="char-card-img">
                 <img :src="character.characterCover" alt="character in movie" />
+                <div class="read-more-container">
+                  <CharacterModal :charactersList="characters[index]" />
+                </div>
               </div>
             </div>
           </div>
@@ -70,8 +73,10 @@
 
 <script>
 import CharacterListComponent from "../CharacterComponent/CharacterListComponent.vue";
+import CharacterModal from "../ModalComponent/ModalCharacter.vue";
 export default {
   components: {
+    CharacterModal,
     CharacterListComponent,
   },
   props: {
@@ -107,11 +112,6 @@ export default {
           return movieCharUrl === char.url;
         });
       });
-    },
-    currentImg() {
-      return this.movie.characters[
-        Math.abs(this.currentIndex) % this.movie.characters
-      ];
     },
   },
 };
@@ -198,15 +198,12 @@ export default {
       p {
         color: white;
       }
-
-      p {
-        font-size: 0.5;
-      }
     }
   }
   .description-part {
     height: 20em;
-    margin-top: 1em;
+    margin-top: 1.5em;
+    padding: 0 2em;
 
     .description-title {
       color: white;
@@ -214,8 +211,8 @@ export default {
 
     .description {
       color: white;
-      padding: 0em;
-      line-height: 2em;
+
+      font-size: 0.9em;
     }
   }
 
@@ -241,22 +238,26 @@ export default {
       .char-card-img {
         width: 10em;
         margin: 0em 0.4em;
-      }
-    }
-  }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        align-items: center;
 
-  .images-carousell-arrows {
-    text-align: center;
-    font-size: 2em;
-    color: grey;
+        .read-more-container {
+          position: absolute;
+          overflow: hidden;
+          .read-more-a {
+            color: white;
+            text-align: center;
+            background: rgba(31, 135, 255, 0.3);
+            border-radius: 0.5em;
 
-    .arrow-icon {
-      cursor: pointer;
-      padding: 0 0.3em;
-
-      &:hover {
-        color: white;
-        transform: scale(1.1);
+            &:hover {
+              background: rgba(31, 135, 255, 0.8);
+            }
+          }
+        }
       }
     }
   }

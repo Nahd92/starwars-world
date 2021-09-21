@@ -1,38 +1,44 @@
 <template>
   <div class="modal-component">
-    <a class="modal-button" @click="doShowModal">Read More!</a>
+    <a class="modal-button" @click="doShowModalCharacter">Read More!</a>
 
     <transition name="fade">
       <div
-        v-if="showModal"
-        @click="showModal = false"
+        v-if="showModalCharacter"
+        @click="showModalCharacter = false"
         class="modal-overlay"
       ></div>
     </transition>
 
     <transition name="slide" appear>
-      <div class="modal" v-if="showModal">
+      <div class="modal" v-if="showModalCharacter">
         <div class="header">
           <div class="image">
-            <img :src="charactersList.characterCover" alt="the character image" class="modal-image" />
+            <img
+              :src="charactersList.characterCover"
+              alt="the character image"
+              class="modal-image"
+            />
           </div>
           <div class="header-info">
             <h3>Name:</h3>
-            <p>{{charactersList.name }}</p>
+            <p>{{ charactersList.name }}</p>
             <h3>Birth Year:</h3>
-            <p>{{ charactersList.birthYear}}</p>
+            <p>{{ charactersList.birthYear }}</p>
             <h3>Eye color:</h3>
-            <p>{{ charactersList.eyeColor}}</p>
+            <p>{{ charactersList.eyeColor }}</p>
           </div>
         </div>
 
         <div class="description-part">
           <h3 class="description-title">Movies:</h3>
-          <div class="description">{{charactersList.movies}}</div>
+          <div class="description">{{ charactersList.movies }}</div>
         </div>
 
         <div class="closebtn">
-          <a class="modal-button" @click="doNotshowModal">CLOSE MODAL</a>
+          <a class="modal-button" @click="doNotshowCharacterModal"
+            >CLOSE MODAL</a
+          >
         </div>
       </div>
     </transition>
@@ -42,31 +48,27 @@
 
 <script>
 export default {
-  props:{
+  props: {
     charactersList: {
       type: Object,
       default: () => [],
     },
-   
   },
-  
-  name: "ModalComponent",
+
+  name: "ModalCharacter",
   data: () => ({
-    showModal: false,
+    showModalCharacter: false,
     Characters: [],
-    films:[]
+    films: [],
   }),
   methods: {
-    doShowModal() {
-      this.showModal = true;
+    doShowModalCharacter() {
+      this.showModalCharacter = true;
     },
-    doNotshowModal() {
-      this.showModal = false;
+    doNotshowCharacterModal() {
+      this.showModalCharacter = false;
     },
   },
-       
-      
-   
 };
 </script>
 
