@@ -21,10 +21,12 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5em;
+    margin-bottom: 2em;
+    
 
     .welcome-text {
       margin: 2em;
+      margin-top:5em;
       padding: 0 2.5em;
       font-size: 1.5em;
       text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c,
@@ -33,35 +35,22 @@ export default {
         0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414,
         0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
     }
+    .welcome-text{
+      text-align: center;
+    }
+    
     .welcome-text p {
       font-size: 0.8em;
       text-align: center;
       padding: 0 1.5em;
       color: #fff;
+      
     }
   }
 }
 
-@media screen and (min-width: 727px) {
-  .welcome {
-    .welcome-container {
-      margin: 0;
-      padding: 0;
-      .white-helmet {
-        width: 50%;
-      }
-      .welcome-text {
-        text-align: center;
-        font-size: 0.7em;
-        letter-spacing: 0.02em;
-      }
-      .welcome-text p {
-        font-size: 0.7em;
-        text-align: center;
-      }
-    }
-  }
-}
+
+
 
 @media screen and (min-width: 1024px) {
   .welcome {
@@ -83,6 +72,7 @@ export default {
       .welcome-text p {
         font-size: 0.5em;
         text-align: center;
+        
       }
     }
   }

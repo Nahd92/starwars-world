@@ -33,4 +33,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "./style/styles.scss";
+
 </style>

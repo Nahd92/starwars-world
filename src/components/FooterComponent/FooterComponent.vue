@@ -33,18 +33,18 @@ export default {
 
 .footer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 20em;
   background-color: var(--dark-color);
 }
 .socials {
   padding-top: 3em;
+  text-align: center;
 }
 .about {
   text-align: center;
   margin-bottom: 0px;
+  
 }
 .footer ul {
   display: flex;
@@ -62,10 +62,9 @@ export default {
 }
 @media screen and (min-width: 900px) {
   .footer {
-    display: flex;
+    flex-direction: row;
     flex: wrap;
     justify-content: space-around;
-    background-color: var(--dark-color);
   }
   .socials {
     flex: 70%;
@@ -89,6 +88,9 @@ export default {
   .about {
     padding: 5em;
     text-align: left;
+    
+    
+    
   }
 }
 </style>
