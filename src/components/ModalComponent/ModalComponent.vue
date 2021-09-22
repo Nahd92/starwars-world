@@ -163,11 +163,13 @@ export default {
 
 .modal {
   position: fixed;
+  margin-top:2em ;
+  margin-bottom: 0px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99;
-  height: 75vh;
+  height: 95%;
   width: 100%;
   padding: 25px;
   max-width: 1000px;
@@ -185,21 +187,33 @@ export default {
     display: flex;
     justify-content: space-around;
     .image-container {
-      width: 40%;
+      width:40%;
+      
     }
+    
+    
+   
 
     .header-info {
       display: flex;
       flex-direction: column;
-      align-items: center;
+       align-items: flex-start;
+       padding: 0 2em;
 
       width: 100%;
-      padding: 0 2em;
+     
       height: 10.6em;
       h3,
       p {
+        font-size: 95%;
         color: white;
+        
+        
+        
+        
+        
       }
+      
     }
   }
   .description-part {
@@ -289,5 +303,37 @@ export default {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+@media screen and (min-width: 848px) 
+{
+  .modal{
+    height: 75vh;
+    .header{
+       .image-container {
+         width: 40%;
+    }
+    .image-container img{
+        width: none;
+        height: none;
+      }
+      .header-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+        padding: 0 2em;
+        height: 10.6em;
+        h3,
+        p {
+          color: white;
+         
+        }
+      }
+    }
+    
+    
+  }
+ 
 }
 </style>
