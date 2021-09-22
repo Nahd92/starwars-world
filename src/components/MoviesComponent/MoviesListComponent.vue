@@ -30,12 +30,7 @@
     <!--PARENT-->
     <div class="show-more-cont">
       <ShowMore
-        v-if="changeShowButtonFunctionalityOnMediaScreen"
-        v-on:showMore="increaseHeight()"
-      />
-      <ShowMore
-        v-else
-        aria-disabled="true"
+        v-on:showMore="changeShowButtonFunctionalityOnMediaScreen()"
         v-on:showNotMore="setHeightToDefault()"
       />
     </div>
@@ -101,12 +96,11 @@ export default {
         this.containerHeightMax = !this.containerHeight;
       }
     },
-  },
-  computed: {
     changeShowButtonFunctionalityOnMediaScreen() {
       console.log(this.windowWidth);
       if (this.windowWidth < 549 && this.containerHeight <= 165) {
         console.log("mobile true");
+        this.increaseHeight();
         return true;
       } else if (
         this.windowWidth > 550 &&
@@ -114,9 +108,27 @@ export default {
         this.containerHeight <= 80
       ) {
         console.log("tablet, true");
+        this.increaseHeight();
         return true;
-      } else if (this.windowWidth > 915 && this.containerHeight <= 55) {
+      } else if (
+        this.windowWidth > 915 &&
+        this.windowWidth < 1021 &&
+        this.containerHeight <= 55
+      ) {
         console.log("Desktop, true");
+        this.increaseHeight();
+        return true;
+      } else if (
+        this.windowWidth > 1025 &&
+        this.windowWidth < 1320 &&
+        this.containerHeight <= 65
+      ) {
+        console.log("Desktop, true, 1300++");
+        this.increaseHeight();
+        return true;
+      } else if (this.windowWidth > 1318 && this.containerHeight <= 55) {
+        console.log("Desktop, true, 1300++");
+        this.increaseHeight();
         return true;
       } else {
         console.log("false");

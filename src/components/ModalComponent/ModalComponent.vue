@@ -234,14 +234,11 @@ export default {
       overflow: auto;
       justify-content: flex-start;
       align-items: center;
-      ::-webkit-scrollbar-track {
-        background-color: #333;
-      }
     }
     .characters {
       .char-card-img {
         width: 10em;
-        margin: 0em 0.4em;
+        margin: 0.3em 0.4em;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -280,6 +277,9 @@ export default {
     right: 0;
     padding: 2.5em;
   }
+}
+::-webkit-scrollbar-track {
+  background-color: #333;
 }
 /* width */
 ::-webkit-scrollbar {

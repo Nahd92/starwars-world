@@ -6,13 +6,13 @@
       class="card-container result-container bd-grid"
       :style="{ height: containerHeight + 'em' }"
     >
-      <p v-if="filteredMovies.length === 0">
+      <p v-if="filteredMovies.length === 0 && filterCharacters.length === 0">
         Could not understand that search, try again!
       </p>
       <div
         v-else
         class="card"
-        v-for="film in filteredMovies"
+        v-for="(film, index) in filteredMovies"
         v-bind:key="film.id"
       >
         <div class="card-img">
@@ -25,13 +25,14 @@
           </h3>
         </div>
         <div class="card-button">
-          <button class="modal-button">Read more</button>
+          <Modal :movie="films[index]" />
         </div>
       </div>
+
       <!-- Characters -->
       <div
         class="card"
-        v-for="character in filterCharacters"
+        v-for="(character, index) in filterCharacters"
         v-bind:key="character.id"
       >
         <div class="card-img">
@@ -43,7 +44,7 @@
           <h3 class="character-eyes">{{ character.eyeColor }}</h3>
         </div>
         <div class="card-button">
-          <button class="modal-button">Read more</button>
+          <ModalCharacter :charactersList="filterCharacters[index]" />
         </div>
       </div>
     </div>
@@ -70,6 +71,8 @@
 </template>
 
 <script>
+import Modal from "../ModalComponent/ModalComponent.vue";
+import ModalCharacter from "../ModalComponent/ModalCharacter.vue";
 import CharacterListComponent from "../CharacterComponent/CharacterListComponent.vue";
 import MoviesListComponent from "../MoviesComponent/MoviesListComponent.vue";
 import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
@@ -78,6 +81,8 @@ export default {
     MoviesListComponent,
     CharacterListComponent,
     ShowMore,
+    Modal,
+    ModalCharacter,
   },
   name: "searchResultComponent",
   props: {
