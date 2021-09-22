@@ -23,11 +23,14 @@
       </div>
     </div>
 
+    <!-- mindre än 530  Mobile 165 -->
+    <!--  530  tablet 80 -->
+    <!-- 910 bredd Smaller Desktop 55 -->
+
     <!--PARENT-->
     <div class="show-more-cont">
       <ShowMore
-        v-show="containerHeight <= 80"
-        v-if="containerHeight <= 32"
+        v-if="changeShowButtonFunctionalityOnMediaScreen"
         v-on:showMore="increaseHeight()"
       />
       <ShowMore
@@ -82,14 +85,13 @@ export default {
     containerHeight: 32,
     containerMaxHeight: false,
     fetchedFilms: [],
-    cardHover: true,
   }),
   methods: {
     toggleCardHover() {
       this.cardHover = !this.cardHover;
     },
     increaseHeight() {
-      this.containerHeight += 25;
+      this.containerHeight += 27;
     },
     setHeightToDefault() {
       this.containerHeight = 32;
@@ -97,6 +99,28 @@ export default {
     containerHeightMax() {
       if (this.containerHeight >= 82) {
         this.containerHeightMax = !this.containerHeight;
+      }
+    },
+  },
+  computed: {
+    changeShowButtonFunctionalityOnMediaScreen() {
+      console.log(this.windowWidth);
+      if (this.windowWidth < 549 && this.containerHeight <= 165) {
+        console.log("mobile true");
+        return true;
+      } else if (
+        this.windowWidth > 550 &&
+        this.windowWidth < 929 &&
+        this.containerHeight <= 80
+      ) {
+        console.log("tablet, true");
+        return true;
+      } else if (this.windowWidth > 915 && this.containerHeight <= 55) {
+        console.log("Desktop, true");
+        return true;
+      } else {
+        console.log("false");
+        return false;
       }
     },
   },
@@ -133,7 +157,7 @@ export default {
       }
       this.$emit("update:movies", this.movies);
     } catch (error) {
-      console.log('error från movieList',error);
+      console.log("error från movieList", error);
     }
   },
 };

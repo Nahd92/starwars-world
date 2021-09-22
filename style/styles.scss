@@ -74,7 +74,7 @@ body {
 	line-height: 1.6;
 	background-color: var(--dark-color);
 	min-height: 100vh;
-	
+
 
 }
 
@@ -143,12 +143,13 @@ img {
 	display: grid;
 	width: 70%;
 }
-@media screen and (max-width: 1023px){
-	.bd-grid{	  
-	  width: 100%;
+
+@media screen and (max-width: 1023px) {
+	.bd-grid {
+		width: 100%;
 	}
-  
-  }
+
+}
 
 
 /*==== Cards  ===*/

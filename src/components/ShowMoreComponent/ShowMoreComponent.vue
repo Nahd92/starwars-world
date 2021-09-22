@@ -36,6 +36,7 @@ export default {
     font-size: 2em;
     color: grey;
     opacity: 0.8;
+    cursor: pointer;
 
     &:hover {
       opacity: 1;
