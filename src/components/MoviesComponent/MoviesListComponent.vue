@@ -23,8 +23,6 @@
       </div>
     </div>
 
-    {{ windowWidth }}
-
     <!-- mindre än 530  Mobile 165 -->
     <!--  530  tablet 80 -->
     <!-- 910 bredd Smaller Desktop 55 -->

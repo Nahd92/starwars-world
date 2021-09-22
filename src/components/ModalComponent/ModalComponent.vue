@@ -110,7 +110,6 @@ export default {
     filterAllCharacters: function () {
       return this.characters.filter((char) => {
         return this.movie.characters.find((movieCharUrl) => {
-          //console.log("FilterAllCharacters, Modal", movieCharUrl, char.url);
           return movieCharUrl === char.url;
         });
       });
@@ -163,7 +162,7 @@ export default {
 
 .modal {
   position: fixed;
-  margin-top:2em ;
+  margin-top: 2em;
   margin-bottom: 0px;
   top: 50%;
   left: 50%;
@@ -187,33 +186,23 @@ export default {
     display: flex;
     justify-content: space-around;
     .image-container {
-      width:40%;
-      
+      width: 40%;
     }
-    
-    
-   
 
     .header-info {
       display: flex;
       flex-direction: column;
-       align-items: flex-start;
-       padding: 0 2em;
+      align-items: flex-start;
+      padding: 0 2em;
 
       width: 100%;
-     
+
       height: 10.6em;
       h3,
       p {
         font-size: 95%;
         color: white;
-        
-        
-        
-        
-        
       }
-      
     }
   }
   .description-part {
@@ -227,7 +216,6 @@ export default {
 
     .description {
       color: white;
-
       font-size: 0.9em;
     }
   }
@@ -260,17 +248,25 @@ export default {
         position: relative;
         align-items: center;
 
+        img {
+          width: 10em;
+          height: 10em;
+        }
+
         .read-more-container {
           position: absolute;
           overflow: hidden;
-          .read-more-a {
-            color: white;
-            text-align: center;
-            background: rgba(31, 135, 255, 0.3);
-            border-radius: 0.5em;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          margin-bottom: 0.5em;
+
+          .read-more-button {
+            font-size: 0.8em;
+            opacity: 0.8;
 
             &:hover {
-              background: rgba(31, 135, 255, 0.8);
+              opacity: 1;
             }
           }
         }
@@ -304,15 +300,15 @@ export default {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-@media screen and (min-width: 848px) 
-{
-  .modal{
+@media screen and (min-width: 848px) {
+  .modal {
+    width: 70%;
     height: 75vh;
-    .header{
-       .image-container {
-         width: 40%;
-    }
-    .image-container img{
+    .header {
+      .image-container {
+        width: 40%;
+      }
+      .image-container img {
         width: none;
         height: none;
       }
@@ -327,13 +323,31 @@ export default {
         h3,
         p {
           color: white;
-         
         }
       }
     }
-    
-    
   }
- 
+}
+@media screen and (min-width: 1024px) {
+  .modal {
+    width: 100%;
+    max-width: 1300px;
+    .header {
+      display: flex;
+      justify-content: space-around;
+      .image-container {
+        width: 30%;
+      }
+
+      .header-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 2em;
+
+        width: 100%;
+      }
+    }
+  }
 }
 </style>

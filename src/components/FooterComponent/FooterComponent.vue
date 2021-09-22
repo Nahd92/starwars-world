@@ -43,8 +43,8 @@ export default {
 }
 .about {
   text-align: center;
-  margin-bottom: 0px;
-  
+  margin: 2em 0;
+  padding: 0 2em;
 }
 .footer ul {
   display: flex;
@@ -60,6 +60,7 @@ export default {
   box-shadow: 0 0 10px 2px rgba(252, 248, 248, 0.2);
   border-radius: 80%;
 }
+
 @media screen and (min-width: 900px) {
   .footer {
     flex-direction: row;
@@ -88,9 +89,6 @@ export default {
   .about {
     padding: 5em;
     text-align: left;
-    
-    
-    
   }
 }
 </style>
