@@ -201,8 +201,17 @@ export default {
 
   }
 }
- @media screen and (max-width: 590px)
+ @media screen and (max-width: 770px)
  {
+   .modal {
+     height:40vh;
+  
+  }
+  .closebtn {
+   position: relative;
+   bottom:3em;
+
+  }
 
 
  }
