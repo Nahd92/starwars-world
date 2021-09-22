@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "WelcomeComponent",
+  name: "Welcome",
 };
 </script>
 
@@ -22,11 +22,10 @@ export default {
     justify-content: center;
     align-items: center;
     margin-bottom: 2em;
-    
 
     .welcome-text {
       margin: 2em;
-      margin-top:5em;
+      margin-top: 5em;
       padding: 0 2.5em;
       font-size: 1.5em;
       text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c,
@@ -35,22 +34,18 @@ export default {
         0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414,
         0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
     }
-    .welcome-text{
+    .welcome-text {
       text-align: center;
     }
-    
+
     .welcome-text p {
       font-size: 0.8em;
       text-align: center;
       padding: 0 1.5em;
       color: #fff;
-      
     }
   }
 }
-
-
-
 
 @media screen and (min-width: 1024px) {
   .welcome {
@@ -59,11 +54,7 @@ export default {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      margin-top: 2em;
-      .white-helmet {
-        display: block;
-        width: 32%;
-      }
+
       .welcome-text {
         text-align: center;
         font-size: 2.5em;
@@ -72,7 +63,6 @@ export default {
       .welcome-text p {
         font-size: 0.5em;
         text-align: center;
-        
       }
     }
   }

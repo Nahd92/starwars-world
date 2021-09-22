@@ -36,13 +36,13 @@
 </template>
 
 <script>
-import SearchResult from "../SearchComponent/ResultComponent.vue";
+import SearchResult from "./Result.vue";
 
 export default {
   components: {
     SearchResult,
   },
-  name: "SearchComponent",
+  name: "Search",
   data: () => ({
     SearchInputField: "",
     searchValue: "",
@@ -58,7 +58,6 @@ export default {
       if (event.target.value.length >= 3) {
         this.searchValue = event.target.value;
         this.textIsShorterthanThree = false;
-        console.log(this.searchValue);
       } else {
         this.textIsShorterthanThree = true;
       }
@@ -69,9 +68,14 @@ export default {
 
 <style lang="scss" scoped>
 .search {
+  p {
+    padding: 1em;
+    font-size: 1em;
+    text-align: left;
+  }
+
   .search-container {
     height: 5em;
-    margin-bottom: 5em;
     .input-icons {
       display: flex;
       justify-content: center;
@@ -116,9 +120,9 @@ export default {
       }
       .cross-icon {
         padding: 0.5em;
-        font-size: 2em;
+        font-size: 2.3em;
         position: absolute;
-        right: 9em;
+        right: 0;
         color: #fff;
         cursor: pointer;
       }

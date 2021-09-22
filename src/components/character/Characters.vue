@@ -29,8 +29,8 @@
   </section>
 </template>
 <script>
-import Modal from "../ModalComponent/ModalCharacter.vue";
-import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
+import Modal from "../modal/CharacterModal.vue";
+import ShowMore from "../showMore/ShowMore.vue";
 export default {
   components: {
     ShowMore,
@@ -42,7 +42,7 @@ export default {
       default: () => [],
     },
   },
-  name: "CharacterListComponent",
+  name: "Characters",
   data: () => ({
     characterCovers: [
       {
@@ -104,7 +104,7 @@ export default {
     
   },
 
-  async created() {
+  async mounted() {
     let data = [];
     try {
       do {
@@ -167,95 +167,8 @@ p {
 }
 
 .card-container {
-  height: 100vh;
-  color: red;
-  margin-bottom: 1em;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  overflow: hidden;
-
   .card {
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 14em;
-    height: 25em;
-    margin: 1em 0.5em;
-    border-radius: 0.5em;
-    -webkit-box-shadow: 2px 5px 16px 0px #0b325e,
-      50px 50px 50px 50px rgba(145, 145, 145, 0),
-      50px 50px 50px 50px rgba(145, 145, 145, 0);
-    box-shadow: 2px 5px 16px 0px #0b325e,
-      50px 50px 50px 50px rgba(145, 145, 145, 0),
-      50px 50px 50px 50px rgba(145, 145, 145, 0);
-
-    .card-img {
-      background-color: var(--white-color);
-      width: 94%;
-
-      margin: 0.5em 0;
-
-      img {
-        height: 10em;
-        width: 100%;
-        border-radius: 0.5em;
-      }
-    }
-
-    .card-information {
-      text-align: center;
-      width: 100%;
-      margin-top: 2em;
-
-      h3 {
-        font-size: 1em;
-        font-weight: normal;
-        color: white;
-      }
-    }
-
-    &:hover {
-      -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
-        2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-      box-shadow: inset -1px 3px 8px 5px #1f87ff, 2px 5px 16px 0px #0b325e,
-        5px 5px 15px 5px rgba(0, 0, 0, 0);
-      transition: 1.2s;
-    }
-
-    .card-button {
-      .read-more {
-        font-size: 1.2em;
-        padding: 0.7em;
-        background: rgba(31, 135, 255, 0.7);
-        color: white;
-
-        &:hover {
-          -webkit-box-shadow: inset -1px 3px 8px 5px #1f87ff,
-            2px 5px 16px 0px #0b325e, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-          box-shadow: inset -1px 3px 8px 5px #1f87ff, 2px 5px 16px 0px #0b325e,
-            5px 5px 15px 5px rgba(0, 0, 0, 0);
-          transform: scale(1.05);
-          color: white;
-          opacity: 1;
-        }
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 727px) {
-}
-
-@media screen and (min-width: 1024px) {
-  .character-container {
-    display: flex;
-
-    .character-card {
-      padding: 0.5em;
-    }
   }
 }
 </style>

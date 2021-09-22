@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: "NavbarComponent",
+  name: "Navbar",
   data: () => ({
     isExpanded: false,
   }),

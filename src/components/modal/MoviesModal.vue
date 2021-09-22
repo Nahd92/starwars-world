@@ -65,21 +65,18 @@
       </div>
     </transition>
 
-    <character-list-component
-      v-show="false"
-      v-bind:charactersList.sync="characters"
-    />
+    <Characters v-show="false" v-bind:charactersList.sync="characters" />
   </div>
 </template>
 
 
 <script>
-import CharacterListComponent from "../CharacterComponent/CharacterListComponent.vue";
-import CharacterModal from "../ModalComponent/ModalCharacter.vue";
+import Characters from "../character/Characters.vue";
+import CharacterModal from "./CharacterModal.vue";
 export default {
   components: {
     CharacterModal,
-    CharacterListComponent,
+    Characters,
   },
   props: {
     movie: {
@@ -91,7 +88,7 @@ export default {
       default: () => [],
     },
   },
-  name: "ModalComponent",
+  name: "MoviesModal",
   data: () => ({
     showModal: false,
     movieCharacters: [],
@@ -300,6 +297,16 @@ export default {
 }
 
 @media screen and (max-width: 375px) {
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 98;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
   .modal {
     width: 100%;
     height: 100vh;

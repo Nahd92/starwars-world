@@ -1,12 +1,12 @@
 <!--CHILD -->
 <template>
   <div class="result-comp">
-    <h3 class="card-title">Search results</h3>
-    <div
-      class="card-container result-container bd-grid"
-      :style="{ height: containerHeight + 'em' }"
-    >
-      <p v-if="filteredMovies.length === 0 && filterCharacters.length === 0">
+    <h3 class="card-title search-title">Search results</h3>
+    <div class="card-container">
+      <p
+        class="couldNotUnderstand"
+        v-if="filteredMovies.length === 0 && filterCharacters.length === 0"
+      >
         Could not understand that search, try again!
       </p>
       <div
@@ -49,73 +49,31 @@
       </div>
     </div>
     <movies-list-component v-show="false" v-bind:movies.sync="films" />
-    <character-list-component
-      v-show="false"
-      v-bind:charactersList.sync="characters"
-    />
-
-    <!--PARENT-->
-    <div class="show-more-cont">
-      <ShowMore
-        v-show="containerHeight <= 80"
-        v-if="containerHeight <= 32"
-        v-on:showMore="increaseHeight()"
-      />
-      <ShowMore
-        v-else
-        aria-disabled="true"
-        v-on:showNotMore="setHeightToDefault()"
-      />
-    </div>
+    <Characters v-show="false" v-bind:charactersList.sync="characters" />
   </div>
 </template>
 
 <script>
-import Modal from "../ModalComponent/ModalComponent.vue";
-import ModalCharacter from "../ModalComponent/ModalCharacter.vue";
-import CharacterListComponent from "../CharacterComponent/CharacterListComponent.vue";
-import MoviesListComponent from "../MoviesComponent/MoviesListComponent.vue";
-import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
+import Modal from "../modal/MoviesModal.vue";
+import ModalCharacter from "../modal/CharacterModal.vue";
+import Characters from "../character/Characters.vue";
+import MoviesListComponent from "../movies/Movies.vue";
 export default {
   components: {
     MoviesListComponent,
-    CharacterListComponent,
-    ShowMore,
+    Characters,
     Modal,
     ModalCharacter,
   },
-  name: "searchResultComponent",
+  name: "Result",
   props: {
     searchValue: String,
   },
   data: () => ({
     films: [],
     characters: [],
-    containerHeight: 32,
-    containerMaxHeight: false,
   }),
-  methods: {
-    toggleCardHover() {
-      this.cardHover = !this.cardHover;
-    },
-    increaseHeight() {
-      this.containerHeight += 25;
-    },
-    setHeightToDefault() {
-      this.containerHeight = 32;
-    },
-    containerHeightMax() {
-      if (this.containerHeight >= 82) {
-        this.containerHeightMax = !this.containerHeight;
-      }
-    },
-  },
-  mounted() {
-    for (let i = 0; i < this.characters.length; i++) {
-      const element = this.characters[i];
-      this.newBigArray.push(element);
-    }
-  },
+
   computed: {
     filteredMovies: function () {
       return this.films.filter((movie) => {
@@ -145,10 +103,24 @@ h3,
 p {
   color: white;
 }
-.result-container {
-  height: 50vh;
-}
 
+.search-title {
+  margin-top: 0.3em;
+}
+.card-container {
+  height: auto;
+  border-bottom: solid 1px #fff;
+  margin-bottom: 3em;
+  overflow: visible;
+
+  .couldNotUnderstand {
+    margin: 5em 0;
+  }
+
+  .card {
+    width: 14em;
+  }
+}
 @media screen and (min-width: 727px) {
 }
 @media screen and (min-width: 1024px) {

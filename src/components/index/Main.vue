@@ -5,22 +5,22 @@
 
     <Search />
     <Movies />
-    <informativ />
+    <Informativ />
     <Character />
   </main>
 </template>
 
 
 <script>
-import Search from "../SearchComponent/SearchComponent.vue";
-import informativ from "../IndexComponent/InformativImageComponent.vue";
-import Movies from "../MoviesComponent/MoviesListComponent.vue";
-import Character from "../CharacterComponent/CharacterListComponent.vue";
+import Search from "../search/Search.vue";
+import Informativ from "./InformativImage.vue";
+import Movies from "../movies/Movies.vue";
+import Character from "../character/Characters.vue";
 export default {
-  name: "MainComponent",
+  name: "Main",
   components: {
     Search,
-    informativ,
+    Informativ,
     Movies,
     Character,
   },
@@ -33,7 +33,5 @@ export default {
 .main {
   background-color: var(--dark-color);
   width: 100%;
-  
 }
-
 </style>

@@ -15,13 +15,13 @@
 </template>
 
 <script>
-import Header from "./HeaderComponent.vue";
-import Welcome from "./WelcomeComponent.vue";
-import Footer from "../FooterComponent/FooterComponent.vue";
-import Main from "./MainComponent.vue";
+import Header from "./Header.vue";
+import Welcome from "./Welcome.vue";
+import Footer from "../footer/Footer.vue";
+import Main from "./Main.vue";
 
 export default {
-  name: "IndexComponent",
+  name: "Index",
   components: {
     Header,
     Welcome,
@@ -33,5 +33,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "./style/styles.scss";
-
 </style>
