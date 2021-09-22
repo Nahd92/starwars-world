@@ -134,7 +134,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99;
-  height: 80vh;
+  height: 40vh;
   width: 100%;
   padding: 25px;
   max-width: 800px;
@@ -150,6 +150,8 @@ export default {
 
   .image {
     width: 100%;
+    height: 10em;
+    overflow: hidden;
 
     .modal-image {
       width: 100%;
@@ -199,4 +201,44 @@ export default {
     padding: 2.5em;
   }
 }
+ @media screen and (max-width: 590px)
+ {
+    .modal 
+    {
+      
+      .header {
+        
+
+        .header-info {
+         
+          
+         
+          height: 10em;
+          h3,
+          p {
+            color: white;
+          }
+
+          p {
+            font-size: 0.7;
+          }
+        }
+      }
+ 
+        .image {
+          
+          .modal-image {
+            width: 100%;
+            height: 100%;
+          }
+      }
+      .closebtn {
+        position: absolute;
+        bottom: 0;
+        right: 7em;
+        padding: 2.5em;
+      }
+
+   }
+ }
 </style>
