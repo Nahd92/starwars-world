@@ -198,22 +198,87 @@ export default {
   .closebtn {
     display: flex;
     justify-content: center;
+    .modal-button
+    {
+      position: relative;
+      bottom:1em;
+    }
 
   }
 }
- @media screen and (max-width: 770px)
- {
-   .modal {
-     height:40vh;
-  
-  }
-  .closebtn {
-   position: relative;
-   bottom:3em;
+@media screen and (max-width: 320px)
+{
+  .modal{
+    width: 90%;
+    height: 20em;
+    .image {
+      width: 40em;
+    
+
+    .modal-image {
+      width: 100%;
+      height: 8em;
+      
+    }
+
+    }
+    .header {
+    
+
+    .header-info {
+      font-size: 0.6em;
+      h3,
+      p {
+        color: white;
+      }
+
+      p {
+        font-size: 0.7;
+      }
+     }
+    }
+    .closebtn {
+    display: flex;
+    justify-content: center;
+    .modal-button
+    {
+      position: relative;
+      bottom:1em;
+    }
 
   }
+  }
 
+}
+@media screen and (max-width: 550px)
+{
+  .modal{
+    .image {
+     
+    width: 50em;
 
- }
+    .modal-image {
+      width: 100%;
+      height: 10em;
+      
+     }
+      
+   }
+   .header-info {
+        font-size: 0.8em;
+        h3,
+        p {
+          color: white;
+        }
+
+        p {
+          font-size: 0.7;
+        }
+      }
+   
+  }
+
+}
+ 
  
 </style>
