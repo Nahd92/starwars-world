@@ -193,8 +193,6 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      padding: 0 2em;
-
       width: 100%;
 
       height: 10.6em;
@@ -300,36 +298,85 @@ export default {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-@media screen and (min-width: 848px) {
+
+@media screen and (max-width: 375px) {
   .modal {
-    width: 70%;
-    height: 75vh;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
     .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       .image-container {
-        width: 40%;
-      }
-      .image-container img {
-        width: none;
-        height: none;
+        width: 60%;
       }
       .header-info {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
-
+        word-wrap: break-word;
         width: 100%;
-        padding: 0 2em;
-        height: 10.6em;
+        padding: 0 1em;
+        text-align: center;
+        margin-top: 0.5em;
+
         h3,
         p {
           color: white;
+          font-size: 0.8em;
         }
+      }
+    }
+    .closebtn {
+      position: relative;
+      .modal-button {
+        position: absolute;
+        bottom: 0;
+        margin: 0.7em 0;
+        right: 0;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 848px) {
+  .modal {
+    width: 75%;
+    height: 80vh;
+    .header {
+      .image-container {
+        width: 50%;
+      }
+      .headerInfo {
+        padding: 0;
+        width: 50%;
+        .header-info {
+          padding: 0;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          h3,
+          p {
+            color: white;
+          }
+        }
+      }
+    }
+    .closebtn {
+      .modal-button {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 0 1em 0.3em 0;
       }
     }
   }
 }
 @media screen and (min-width: 1024px) {
   .modal {
+    height: 80vh;
     width: 100%;
     max-width: 1300px;
     .header {

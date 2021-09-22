@@ -93,11 +93,10 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .hide {
-    border: solid red 1px;
     position: fixed;
     top: var(--header-height-bigger);
     right: -100%;
-    width: 30%;
+    width: 40%;
     height: 100vh;
     padding: 2rem;
     background-color: var(--dark-color);
@@ -115,10 +114,9 @@ export default {
 
   .show-menu {
     position: fixed;
-    border: solid red 1px;
     top: var(--header-height-bigger);
     right: 0;
-    width: 30%;
+    width: 40%;
     height: 100vh;
     padding: 2rem;
     background-color: var(--dark-color);
