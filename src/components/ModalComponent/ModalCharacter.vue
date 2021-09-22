@@ -134,7 +134,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99;
-  height: 80vh;
+  height: 50vh;
   width: 100%;
   padding: 25px;
   max-width: 800px;
@@ -150,9 +150,12 @@ export default {
 
   .image {
     width: 100%;
+    height: 30vh;
+    overflow: hidden;
 
     .modal-image {
       width: 100%;
+      
     }
   }
 
@@ -193,10 +196,24 @@ export default {
   }
 
   .closebtn {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding: 2.5em;
+    display: flex;
+    justify-content: center;
+
   }
 }
+ @media screen and (max-width: 770px)
+ {
+   .modal {
+     height:40vh;
+  
+  }
+  .closebtn {
+   position: relative;
+   bottom:3em;
+
+  }
+
+
+ }
+ 
 </style>

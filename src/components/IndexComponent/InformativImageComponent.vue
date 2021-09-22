@@ -34,4 +34,20 @@ export default {};
   box-shadow: inset -1px 3px 8px 5px #1f87ff, 2px 5px 16px 0px #0b325e,
     5px 5px 15px 5px rgba(0, 0, 0, 0);
 }
+@media screen and (max-width: 590px){
+  
+.informativ-section {
+ height: 15em;
+  
+  .informativ-container {
+    top: 0em;
+    
+    img {
+      height: 20em;
+      width: 100%;
+    }
+  }
+ 
+}
+}
 </style>
