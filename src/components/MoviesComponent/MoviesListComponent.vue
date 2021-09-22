@@ -97,9 +97,9 @@ export default {
       }
     },
     changeShowButtonFunctionalityOnMediaScreen() {
-      console.log(this.windowWidth);
+      // console.log(this.windowWidth);
       if (this.windowWidth < 549 && this.containerHeight <= 165) {
-        console.log("mobile true");
+        // console.log("mobile true");
         this.increaseHeight();
         return true;
       } else if (
@@ -107,7 +107,7 @@ export default {
         this.windowWidth < 929 &&
         this.containerHeight <= 80
       ) {
-        console.log("tablet, true");
+        // console.log("tablet, true");
         this.increaseHeight();
         return true;
       } else if (
@@ -115,23 +115,23 @@ export default {
         this.windowWidth < 1021 &&
         this.containerHeight <= 55
       ) {
-        console.log("Desktop, true");
+        // console.log("Desktop, true");
         this.increaseHeight();
         return true;
       } else if (
-        this.windowWidth > 1025 &&
+        this.windowWidth > 1023 &&
         this.windowWidth < 1320 &&
         this.containerHeight <= 65
       ) {
-        console.log("Desktop, true, 1300++");
+        // console.log("Desktop, true, 1300++");
         this.increaseHeight();
         return true;
       } else if (this.windowWidth > 1318 && this.containerHeight <= 55) {
-        console.log("Desktop, true, 1300++");
+        //console.log("Desktop, true, 1300++");
         this.increaseHeight();
         return true;
       } else {
-        console.log("false");
+        // console.log("false");
         return false;
       }
     },

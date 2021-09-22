@@ -1,11 +1,8 @@
 <!--CHILD -->
 <template>
   <div class="result-comp">
-    <h3 class="card-title">Search results</h3>
-    <div
-      class="card-container result-container bd-grid"
-      :style="{ height: containerHeight + 'em' }"
-    >
+    <h3 class="card-title search-title">Search results</h3>
+    <div class="card-container">
       <p v-if="filteredMovies.length === 0 && filterCharacters.length === 0">
         Could not understand that search, try again!
       </p>
@@ -53,20 +50,6 @@
       v-show="false"
       v-bind:charactersList.sync="characters"
     />
-
-    <!--PARENT-->
-    <div class="show-more-cont">
-      <ShowMore
-        v-show="containerHeight <= 80"
-        v-if="containerHeight <= 32"
-        v-on:showMore="increaseHeight()"
-      />
-      <ShowMore
-        v-else
-        aria-disabled="true"
-        v-on:showNotMore="setHeightToDefault()"
-      />
-    </div>
   </div>
 </template>
 
@@ -75,12 +58,11 @@ import Modal from "../ModalComponent/ModalComponent.vue";
 import ModalCharacter from "../ModalComponent/ModalCharacter.vue";
 import CharacterListComponent from "../CharacterComponent/CharacterListComponent.vue";
 import MoviesListComponent from "../MoviesComponent/MoviesListComponent.vue";
-import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
 export default {
   components: {
     MoviesListComponent,
     CharacterListComponent,
-    ShowMore,
+
     Modal,
     ModalCharacter,
   },
@@ -91,31 +73,8 @@ export default {
   data: () => ({
     films: [],
     characters: [],
-    containerHeight: 32,
-    containerMaxHeight: false,
   }),
-  methods: {
-    toggleCardHover() {
-      this.cardHover = !this.cardHover;
-    },
-    increaseHeight() {
-      this.containerHeight += 25;
-    },
-    setHeightToDefault() {
-      this.containerHeight = 32;
-    },
-    containerHeightMax() {
-      if (this.containerHeight >= 82) {
-        this.containerHeightMax = !this.containerHeight;
-      }
-    },
-  },
-  mounted() {
-    for (let i = 0; i < this.characters.length; i++) {
-      const element = this.characters[i];
-      this.newBigArray.push(element);
-    }
-  },
+
   computed: {
     filteredMovies: function () {
       return this.films.filter((movie) => {
@@ -145,10 +104,20 @@ h3,
 p {
   color: white;
 }
-.result-container {
-  height: 50vh;
-}
 
+.search-title {
+  margin-top: 0.3em;
+}
+.card-container {
+  height: auto;
+  margin-top: 0;
+  border-bottom: solid 1px #fff;
+  margin-bottom: 3.5em;
+  overflow: visible;
+  .card {
+    width: 14em;
+  }
+}
 @media screen and (min-width: 727px) {
 }
 @media screen and (min-width: 1024px) {

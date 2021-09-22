@@ -16,7 +16,7 @@
 
 <script>
 import Header from "./HeaderComponent.vue";
-import Welcome from "./WelcomeComponent.vue";
+import Welcome from "../ModalComponent/WelcomeComponent.vue";
 import Footer from "../FooterComponent/FooterComponent.vue";
 import Main from "./MainComponent.vue";
 
@@ -33,5 +33,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "./style/styles.scss";
-
 </style>

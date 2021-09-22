@@ -300,6 +300,16 @@ export default {
 }
 
 @media screen and (max-width: 375px) {
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 98;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
   .modal {
     width: 100%;
     height: 100vh;
