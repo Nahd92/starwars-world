@@ -2,7 +2,7 @@
   <section class="informativ-section">
     <div class="informativ-container">
       <div class="info-img">
-        <img src="../../assets/a-new-hope.jpg" alt="galaxy" />
+        <img src="../../assets/movies/a-new-hope.jpg" alt="galaxy" />
       </div>
     </div>
   </section>

@@ -59,22 +59,22 @@ export default {
   data: () => ({
     films: [
       {
-        src: require("@/assets/a-new-hope.jpg"),
+        src: require("@/assets/movies/a-new-hope.jpg"),
       },
       {
-        src: require("@/assets/empire.jpg"),
+        src: require("@/assets/movies/empire.jpg"),
       },
       {
-        src: require("@/assets/return-of-jedi.jpg"),
+        src: require("@/assets/movies/return-of-jedi.jpg"),
       },
       {
-        src: require("@/assets/the-phantom.jpg"),
+        src: require("@/assets/movies/the-phantom.jpg"),
       },
       {
-        src: require("@/assets/attack-of-the-clones.jpg"),
+        src: require("@/assets/movies/attack-of-the-clones.jpg"),
       },
       {
-        src: require("@/assets/revenge-of.jpg"),
+        src: require("@/assets/movies/revenge-of.jpg"),
       },
     ],
     containerHeight: 32,

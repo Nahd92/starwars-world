@@ -46,7 +46,7 @@ export default {
   data: () => ({
     characterCovers: [
       {
-        src: require("@/assets/luke2.jpg"),
+        src: require("@/assets/character/luke2.jpg"),
       },
       {
         src: require("@/assets/character/c-3po.jpeg"),
@@ -75,16 +75,10 @@ export default {
       {
         src: require("@/assets/character/obi-wan.jpg"),
       },
-      {
-        src: require("@/assets/galaxy.jpg"),
-      },
-      {
-        src: require("@/assets/galaxy.jpg"),
-      },
+      
     ],
-    fetchcovers: [],
+
     fetchCharacters: [],
-    textIsVisible: true,
     pages: 1,
     containerHeight: 60,
     containerMaxHeight: false,
@@ -92,12 +86,13 @@ export default {
   }),
 
   methods: {
-    increaseHeight() {
-      if (this.containerHeight >= 500) {
+    increaseHeight() {  
+        if (this.containerHeight >= 500) {
         this.containerHeight = 500;
       } else this.containerHeight += 55;
     },
     setHeightToDefault() {
+      
       this.containerHeight = 60;
     },
     containerHeightMax() {
@@ -105,10 +100,8 @@ export default {
         this.containerHeight = !this.containerHeight;
       }
     },
-    showText() {
-      console.log("den körs");
-      this.textIsVisible = !this.textIsVisible;
-    },
+   
+    
   },
 
   async mounted() {
