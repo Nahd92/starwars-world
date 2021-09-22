@@ -50,7 +50,7 @@ export default {
     },
   },
 
-  name: "ModalCharacter",
+  name: "CharacterModal",
   data: () => ({
     showModalCharacter: false,
     Characters: [],
@@ -155,7 +155,6 @@ export default {
 
     .modal-image {
       width: 100%;
-      
     }
   }
 
@@ -198,74 +197,27 @@ export default {
   .closebtn {
     display: flex;
     justify-content: center;
-    .modal-button
-    {
+    .modal-button {
       position: relative;
-      bottom:1em;
+      bottom: 1em;
     }
-
   }
 }
-@media screen and (max-width: 320px)
-{
-  .modal{
+@media screen and (max-width: 320px) {
+  .modal {
     width: 90%;
     height: 20em;
     .image {
       width: 40em;
-    
 
-    .modal-image {
-      width: 100%;
-      height: 8em;
-      
-    }
-
+      .modal-image {
+        width: 100%;
+        height: 8em;
+      }
     }
     .header {
-    
-
-    .header-info {
-      font-size: 0.6em;
-      h3,
-      p {
-        color: white;
-      }
-
-      p {
-        font-size: 0.7;
-      }
-     }
-    }
-    .closebtn {
-    display: flex;
-    justify-content: center;
-    .modal-button
-    {
-      position: relative;
-      bottom:1em;
-    }
-
-  }
-  }
-
-}
-@media screen and (max-width: 550px)
-{
-  .modal{
-    .image {
-     
-    width: 50em;
-
-    .modal-image {
-      width: 100%;
-      height: 10em;
-      
-     }
-      
-   }
-   .header-info {
-        font-size: 0.8em;
+      .header-info {
+        font-size: 0.6em;
         h3,
         p {
           color: white;
@@ -275,10 +227,38 @@ export default {
           font-size: 0.7;
         }
       }
-   
+    }
+    .closebtn {
+      display: flex;
+      justify-content: center;
+      .modal-button {
+        position: relative;
+        bottom: 1em;
+      }
+    }
   }
-
 }
- 
- 
+@media screen and (max-width: 550px) {
+  .modal {
+    .image {
+      width: 50em;
+
+      .modal-image {
+        width: 100%;
+        height: 10em;
+      }
+    }
+    .header-info {
+      font-size: 0.8em;
+      h3,
+      p {
+        color: white;
+      }
+
+      p {
+        font-size: 0.7;
+      }
+    }
+  }
+}
 </style>

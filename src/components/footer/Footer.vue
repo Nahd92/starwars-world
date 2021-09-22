@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: "FooterComponent",
+  name: "Footer",
 };
 </script>
 
@@ -66,6 +66,7 @@ export default {
     flex-direction: row;
     flex: wrap;
     justify-content: space-around;
+    align-items: center;
   }
   .socials {
     flex: 70%;

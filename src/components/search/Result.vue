@@ -3,7 +3,10 @@
   <div class="result-comp">
     <h3 class="card-title search-title">Search results</h3>
     <div class="card-container">
-      <p v-if="filteredMovies.length === 0 && filterCharacters.length === 0">
+      <p
+        class="couldNotUnderstand"
+        v-if="filteredMovies.length === 0 && filterCharacters.length === 0"
+      >
         Could not understand that search, try again!
       </p>
       <div
@@ -46,27 +49,23 @@
       </div>
     </div>
     <movies-list-component v-show="false" v-bind:movies.sync="films" />
-    <character-list-component
-      v-show="false"
-      v-bind:charactersList.sync="characters"
-    />
+    <Characters v-show="false" v-bind:charactersList.sync="characters" />
   </div>
 </template>
 
 <script>
-import Modal from "../ModalComponent/ModalComponent.vue";
-import ModalCharacter from "../ModalComponent/ModalCharacter.vue";
-import CharacterListComponent from "../CharacterComponent/CharacterListComponent.vue";
-import MoviesListComponent from "../MoviesComponent/MoviesListComponent.vue";
+import Modal from "../modal/MoviesModal.vue";
+import ModalCharacter from "../modal/CharacterModal.vue";
+import Characters from "../character/Characters.vue";
+import MoviesListComponent from "../movies/Movies.vue";
 export default {
   components: {
     MoviesListComponent,
-    CharacterListComponent,
-
+    Characters,
     Modal,
     ModalCharacter,
   },
-  name: "searchResultComponent",
+  name: "Result",
   props: {
     searchValue: String,
   },
@@ -110,10 +109,14 @@ p {
 }
 .card-container {
   height: auto;
-  margin-top: 0;
   border-bottom: solid 1px #fff;
-  margin-bottom: 3.5em;
+  margin-bottom: 3em;
   overflow: visible;
+
+  .couldNotUnderstand {
+    margin: 5em 0;
+  }
+
   .card {
     width: 14em;
   }

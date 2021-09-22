@@ -36,13 +36,13 @@
 </template>
 
 <script>
-import SearchResult from "../SearchComponent/ResultComponent.vue";
+import SearchResult from "./Result.vue";
 
 export default {
   components: {
     SearchResult,
   },
-  name: "SearchComponent",
+  name: "Search",
   data: () => ({
     SearchInputField: "",
     searchValue: "",
@@ -58,7 +58,6 @@ export default {
       if (event.target.value.length >= 3) {
         this.searchValue = event.target.value;
         this.textIsShorterthanThree = false;
-        console.log(this.searchValue);
       } else {
         this.textIsShorterthanThree = true;
       }

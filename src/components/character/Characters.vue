@@ -29,8 +29,8 @@
   </section>
 </template>
 <script>
-import Modal from "../ModalComponent/ModalCharacter.vue";
-import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
+import Modal from "../modal/CharacterModal.vue";
+import ShowMore from "../showMore/ShowMore.vue";
 export default {
   components: {
     ShowMore,
@@ -42,7 +42,7 @@ export default {
       default: () => [],
     },
   },
-  name: "CharacterListComponent",
+  name: "Characters",
   data: () => ({
     characterCovers: [
       {

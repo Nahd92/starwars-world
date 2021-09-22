@@ -14,7 +14,7 @@
 <!--CHILD-->
 <script>
 export default {
-  name: "ShowMoreComponent",
+  name: "ShowMore",
 };
 </script>
 

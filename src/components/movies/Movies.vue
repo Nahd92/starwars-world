@@ -38,10 +38,10 @@
 </template>
 
 <script>
-import Modal from "../ModalComponent/ModalComponent.vue";
-import ShowMore from "../ShowMoreComponent/ShowMoreComponent.vue";
+import Modal from "../modal/MoviesModal.vue";
+import ShowMore from "../showMore/ShowMore.vue";
 export default {
-  name: "MoviesListComponent",
+  name: "Movies",
   components: {
     Modal,
     ShowMore,
