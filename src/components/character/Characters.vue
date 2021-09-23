@@ -56,9 +56,10 @@ export default {
 
   methods: {
     increaseHeight() {
-      if (this.containerHeight >= 500) {
+      this.containerHeight += 55;
+      /*if (this.containerHeight >= 500) {
         this.containerHeight = 500;
-      } else this.containerHeight += 55;
+      } else this.containerHeight += 55;*/
     },
     setHeightToDefault() {
       this.containerHeight = 60;
