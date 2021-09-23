@@ -168,7 +168,7 @@ export default {
       align-items: center;
 
       img {
-        width: 7em;
+        width: 100%;
         height: 7em;
       }
 
