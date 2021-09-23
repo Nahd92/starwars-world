@@ -88,8 +88,6 @@ export default {
     filterAllMovies: function () {
       return this.movies.filter((movie) => {
         return this.character.films.find((charactersUrl) => {
-          console.log("movie", movie.elementUrl);
-          console.log("character", charactersUrl);
           return charactersUrl === movie.elementUrl;
         });
       });
