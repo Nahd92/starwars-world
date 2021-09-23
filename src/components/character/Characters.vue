@@ -87,9 +87,11 @@ export default {
 
   methods: {
     increaseHeight() {  
-        if (this.containerHeight >= 500) {
+
+      this.containerHeight +=55;
+        /*if (this.containerHeight >= 500) {
         this.containerHeight = 500;
-      } else this.containerHeight += 55;
+      } else this.containerHeight += 55;*/
     },
     setHeightToDefault() {
       
@@ -100,6 +102,21 @@ export default {
         this.containerHeight = !this.containerHeight;
       }
     },
+    showmorecklick()
+    {
+      if (this.windowWidth < 549 && this.containerHeight <= 1000)
+      {
+          this.increaseHeight()
+          return true;
+      }
+      
+      else if (this.windowWidth > 1318 && this.containerHeight <= 500)
+      {
+        this.increaseHeight()
+        return true;
+
+      }
+    }
    
     
   },
