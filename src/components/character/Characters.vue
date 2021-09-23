@@ -26,7 +26,7 @@
         v-on:showNotMore="setHeightToDefault()"
       />
       <h3 class="char-length">
-        Showing Characters: {{ charactersLength }} out of
+        Number of characters:
         {{ characters.length }}
       </h3>
     </div>
@@ -61,18 +61,18 @@ export default {
   methods: {
     increaseHeight() {
       this.containerHeight += 55;
-      this.reduceCharLengthOnClick();
+      //this.reduceCharLengthOnClick();
     },
-    reduceCharLengthOnClick() {
-      if (this.charactersLength >= this.characters.length - 2) {
-        this.charactersLength = this.characters.length;
-      } else {
-        this.charactersLength += 10;
-      }
-    },
+    //reduceCharLengthOnClick() {
+    // if (this.charactersLength >= this.characters.length - 2) {
+    //   this.charactersLength = this.characters.length;
+    // } else {
+    //   this.charactersLength += 10;
+    // }
+    //},
     setHeightToDefault() {
       this.containerHeight = 60;
-      this.charactersLength = 10;
+      // this.charactersLength = 10;
     },
     containerHeightMax() {
       if (this.containerHeight >= 800) {
@@ -96,6 +96,7 @@ export default {
 .char-length {
   color: white;
   text-align: center;
+  margin-top: 1em;
 }
 h3,
 p {
