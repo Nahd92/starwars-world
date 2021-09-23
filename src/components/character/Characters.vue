@@ -4,7 +4,7 @@
     <div :style="{ height: containerHeight + 'em' }" class="card-container">
       <div
         class="card"
-        v-for="(character, index) in fetchCharacters"
+        v-for="(character, index) in characters"
         v-bind:key="character.id"
       >
         <div class="card-img">
@@ -14,7 +14,7 @@
           <h3 class="card-name">{{ character.name }}</h3>
         </div>
         <div class="card-button">
-          <Modal :charactersList="charactersList[index]" />
+          <CharacterModal :character="characters[index]" :movies="movies" />
         </div>
       </div>
     </div>
@@ -29,70 +29,38 @@
   </section>
 </template>
 <script>
-import Modal from "../modal/CharacterModal.vue";
+import CharacterModal from "../modal/CharacterModal.vue";
 import ShowMore from "../showMore/ShowMore.vue";
 export default {
   components: {
     ShowMore,
-    Modal,
+    CharacterModal,
   },
   props: {
-    charactersList: {
+    characters: {
+      type: Array,
+      default: () => [],
+    },
+    movies: {
       type: Array,
       default: () => [],
     },
   },
   name: "Characters",
   data: () => ({
-    characterCovers: [
-      {
-        src: require("@/assets/character/luke2.jpg"),
-      },
-      {
-        src: require("@/assets/character/c-3po.jpeg"),
-      },
-      {
-        src: require("@/assets/character/r2d2.jpeg"),
-      },
-      {
-        src: require("@/assets/character/darthVader.jpg"),
-      },
-      {
-        src: require("@/assets/character/leia.jpg"),
-      },
-      {
-        src: require("@/assets/character/owenLars.jpg"),
-      },
-      {
-        src: require("@/assets/character/beruWhitnesun.jpg"),
-      },
-      {
-        src: require("@/assets/character/r5-d4.jpeg"),
-      },
-      {
-        src: require("@/assets/character/biggsDarklighter.jpeg"),
-      },
-      {
-        src: require("@/assets/character/obi-wan.jpg"),
-      },
-      
-    ],
-
     fetchCharacters: [],
     pages: 1,
     containerHeight: 60,
     containerMaxHeight: false,
-    charactersObject: [],
   }),
 
   methods: {
-    increaseHeight() {  
-        if (this.containerHeight >= 500) {
+    increaseHeight() {
+      if (this.containerHeight >= 500) {
         this.containerHeight = 500;
       } else this.containerHeight += 55;
     },
     setHeightToDefault() {
-      
       this.containerHeight = 60;
     },
     containerHeightMax() {
@@ -100,54 +68,6 @@ export default {
         this.containerHeight = !this.containerHeight;
       }
     },
-   
-    
-  },
-
-  async mounted() {
-    let data = [];
-    try {
-      do {
-        const url = `https://swapi.dev/api/people/?page=${this.pages}`;
-        const response = await fetch(url);
-        data.push(await response.json());
-        this.pages++;
-      } while (this.pages <= 9);
-
-      for (let i = 0; i < data.length; i++) {
-        this.charactersObject.push(data[i].results);
-      }
-
-      for (let i = 0; i < this.charactersObject.length; i++) {
-        let charactersArray = this.charactersObject[i];
-        for (let y = 0; y < charactersArray.length; y++) {
-          const element = charactersArray[y];
-          const name = element.name;
-          const birthYear = element.birth_year;
-          const eyeColor = element.eye_color;
-          const url = element.url;
-          const characterCover = this.characterCovers[y].src;
-
-          this.fetchCharacters.push({
-            characterCover,
-            name,
-            birthYear,
-            eyeColor,
-          });
-          this.charactersList.push({
-            characterCover,
-            name,
-            birthYear,
-            eyeColor,
-            url,
-          });
-        }
-      }
-
-      this.$emit("update:characters", this.charactersList);
-    } catch (error) {
-      console.log(error);
-    }
   },
 };
 </script>

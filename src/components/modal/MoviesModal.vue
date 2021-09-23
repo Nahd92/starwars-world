@@ -46,7 +46,8 @@
                 <img :src="character.characterCover" alt="character in movie" />
                 <div class="read-more-container">
                   <CharacterModal
-                    :charactersList="filterAllCharacters[index]"
+                    :character="filterAllCharacters[index]"
+                    :movies="movies"
                   />
                 </div>
               </div>
@@ -64,21 +65,21 @@
         </div>
       </div>
     </transition>
-
-    <Characters v-show="false" v-bind:charactersList.sync="characters" />
   </div>
 </template>
 
 
 <script>
-import Characters from "../character/Characters.vue";
 import CharacterModal from "./CharacterModal.vue";
 export default {
   components: {
     CharacterModal,
-    Characters,
   },
   props: {
+    movies: {
+      type: Array,
+      default: () => [],
+    },
     movie: {
       type: Object,
       default: () => ({}),
@@ -383,8 +384,8 @@ export default {
 }
 @media screen and (min-width: 1024px) {
   .modal {
-    height: 80vh;
-    width: 100%;
+    height: 90vh;
+    width: 70%;
     max-width: 1300px;
     .header {
       display: flex;

@@ -3,11 +3,7 @@
     <h2 class="card-title">All Movies</h2>
     <div :style="{ height: containerHeight + 'em' }" class="card-container">
       <!-- Adding v-for here -->
-      <div
-        class="card"
-        v-for="(film, index) in fetchedFilms"
-        v-bind:key="film.id"
-      >
+      <div class="card" v-for="(film, index) in movies" v-bind:key="film.id">
         <div class="card-img">
           <!-- Adding src by binding here -->
           <img :src="film.src" alt="Helmet" />
@@ -18,14 +14,14 @@
           </h3>
         </div>
         <div class="card-button">
-          <Modal :movie="movies[index]" />
+          <MoviesModal
+            :movies="movies"
+            :movie="movies[index]"
+            :characters="characters"
+          />
         </div>
       </div>
     </div>
-
-    <!-- mindre än 530  Mobile 165 -->
-    <!--  530  tablet 80 -->
-    <!-- 910 bredd Smaller Desktop 55 -->
 
     <!--PARENT-->
     <div class="show-more-cont">
@@ -38,18 +34,18 @@
 </template>
 
 <script>
-import Modal from "../modal/MoviesModal.vue";
+import MoviesModal from "../modal/MoviesModal.vue";
 import ShowMore from "../showMore/ShowMore.vue";
 export default {
   name: "Movies",
   components: {
-    Modal,
+    MoviesModal,
     ShowMore,
   },
   props: {
-    movie: {
-      type: Object,
-      default: () => ({}),
+    characters: {
+      type: Array,
+      default: () => [],
     },
     movies: {
       type: Array,
@@ -57,26 +53,6 @@ export default {
     },
   },
   data: () => ({
-    films: [
-      {
-        src: require("@/assets/movies/a-new-hope.jpg"),
-      },
-      {
-        src: require("@/assets/movies/empire.jpg"),
-      },
-      {
-        src: require("@/assets/movies/return-of-jedi.jpg"),
-      },
-      {
-        src: require("@/assets/movies/the-phantom.jpg"),
-      },
-      {
-        src: require("@/assets/movies/attack-of-the-clones.jpg"),
-      },
-      {
-        src: require("@/assets/movies/revenge-of.jpg"),
-      },
-    ],
     containerHeight: 32,
     containerMaxHeight: false,
     fetchedFilms: [],
@@ -135,42 +111,6 @@ export default {
         return false;
       }
     },
-  },
-  async mounted() {
-    const url = "https://swapi.dev/api/films";
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      for (let i = 0; i < data.results.length; i++) {
-        const element = data.results[i];
-        const title = element.title;
-        const releaseDate = element.release_date;
-        const producer = element.producer;
-        const openingCrawl = element.opening_crawl;
-        const characters = element.characters;
-        const src = this.films[i].src;
-        this.fetchedFilms.push({
-          src,
-          title,
-          releaseDate,
-          producer,
-          openingCrawl,
-          characters,
-        });
-        this.movies.push({
-          src,
-          title,
-          releaseDate,
-          producer,
-          openingCrawl,
-          characters,
-          url,
-        });
-      }
-      this.$emit("update:movies", this.movies);
-    } catch (error) {
-      console.log("error från movieList", error);
-    }
   },
 };
 </script>

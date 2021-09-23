@@ -15,18 +15,34 @@
         <div class="header">
           <div class="image">
             <img
-              :src="charactersList.characterCover"
+              :src="character.characterCover"
               alt="the character image"
               class="modal-image"
             />
           </div>
           <div class="header-info">
             <h3>Name:</h3>
-            <p>{{ charactersList.name }}</p>
+            <p>{{ character.name }}</p>
             <h3>Birth Year:</h3>
-            <p>{{ charactersList.birthYear }}</p>
+            <p>{{ character.birthYear }}</p>
             <h3>Eye color:</h3>
-            <p>{{ charactersList.eyeColor }}</p>
+            <p>{{ character.eyeColor }}</p>
+          </div>
+        </div>
+
+        <div class="movies-images">
+          <h3 class="movies-title">Characters in the Movie</h3>
+          <div class="movies-container">
+            <div
+              class="movies"
+              v-for="movie in filterAllMovies"
+              v-bind:key="movie.id"
+            >
+              <div class="movies-card-img">
+                <h4>{{ movie.title }}</h4>
+                <img :src="movie.src" alt="character in movie" />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -43,14 +59,18 @@
 
 <script>
 export default {
+  name: "CharacterModal",
   props: {
-    charactersList: {
+    character: {
       type: Object,
+      default: () => ({}),
+    },
+    movies: {
+      type: Array,
       default: () => [],
     },
   },
 
-  name: "CharacterModal",
   data: () => ({
     showModalCharacter: false,
     Characters: [],
@@ -62,6 +82,17 @@ export default {
     },
     doNotshowCharacterModal() {
       this.showModalCharacter = false;
+    },
+  },
+  computed: {
+    filterAllMovies: function () {
+      return this.movies.filter((movie) => {
+        return this.character.films.find((charactersUrl) => {
+          console.log("movie", movie.elementUrl);
+          console.log("character", charactersUrl);
+          return charactersUrl === movie.elementUrl;
+        });
+      });
     },
   },
 };
@@ -81,6 +112,9 @@ export default {
   h1,
   h3 {
     color: blacK;
+  }
+  h4 {
+    font-size: 0.8em;
   }
 }
 .modal-button {
@@ -108,6 +142,56 @@ export default {
   margin: 2em 0;
 }
 
+.movies-images {
+  .movies-title {
+    color: var(--white-color);
+    text-align: center;
+    margin: 1em 0;
+  }
+
+  .movies-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .movies {
+    .movies-card-img {
+      width: 10em;
+      margin: 0.3em 0.4em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      align-items: center;
+
+      img {
+        width: 7em;
+        height: 7em;
+      }
+
+      .read-more-container {
+        position: absolute;
+        overflow: hidden;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin-bottom: 0.5em;
+
+        .read-more-button {
+          font-size: 0.8em;
+          opacity: 0.8;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -134,7 +218,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99;
-  height: 50vh;
+  height: 80vh;
   width: 100%;
   padding: 25px;
   max-width: 800px;
