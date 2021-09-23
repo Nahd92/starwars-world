@@ -25,7 +25,11 @@
           </h3>
         </div>
         <div class="card-button">
-          <Modal :movie="films[index]" />
+          <Modal
+            :movie="movies[index]"
+            :characters="characters"
+            :movies="movies"
+          />
         </div>
       </div>
 
@@ -44,39 +48,48 @@
           <h3 class="character-eyes">{{ character.eyeColor }}</h3>
         </div>
         <div class="card-button">
-          <ModalCharacter :charactersList="filterCharacters[index]" />
+          <ModalCharacter
+            :character="filterCharacters[index]"
+            :movies="movies"
+          />
         </div>
       </div>
     </div>
-    <movies-list-component v-show="false" v-bind:movies.sync="films" />
-    <Characters v-show="false" v-bind:charactersList.sync="characters" />
   </div>
 </template>
 
 <script>
 import Modal from "../modal/MoviesModal.vue";
 import ModalCharacter from "../modal/CharacterModal.vue";
-import Characters from "../character/Characters.vue";
-import MoviesListComponent from "../movies/Movies.vue";
 export default {
+  name: "Result",
   components: {
-    MoviesListComponent,
-    Characters,
     Modal,
     ModalCharacter,
   },
-  name: "Result",
   props: {
     searchValue: String,
+    characters: {
+      type: Array,
+      default: () => [],
+    },
+    movies: {
+      type: Array,
+      default: () => [],
+    },
+    movie: {
+      type: Object,
+      default: () => ({}),
+    },
+    character: {
+      type: Object,
+      default: () => ({}),
+    },
   },
-  data: () => ({
-    films: [],
-    characters: [],
-  }),
 
   computed: {
     filteredMovies: function () {
-      return this.films.filter((movie) => {
+      return this.movies.filter((movie) => {
         return movie.title
           .toLowerCase()
           .includes(this.searchValue.toLowerCase());

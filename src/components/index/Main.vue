@@ -3,7 +3,7 @@
     <!-- Här ska alla delar som ska finnas i main importeras in -->
     <!-- Search part-->
 
-    <Search />
+    <Search :movies="movies" :characters="characters" />
     <Movies :movies="movies" :characters="characters" />
     <Informativ />
     <Character :movies="movies" :characters="characters" />

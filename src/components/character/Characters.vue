@@ -25,6 +25,10 @@
         v-on:showMore="increaseHeight()"
         v-on:showNotMore="setHeightToDefault()"
       />
+      <h3 class="char-length">
+        Showing Characters: {{ charactersLength }} out of
+        {{ characters.length }}
+      </h3>
     </div>
   </section>
 </template>
@@ -52,17 +56,23 @@ export default {
     pages: 1,
     containerHeight: 60,
     containerMaxHeight: false,
+    charactersLength: 10,
   }),
-
   methods: {
     increaseHeight() {
       this.containerHeight += 55;
-      /*if (this.containerHeight >= 500) {
-        this.containerHeight = 500;
-      } else this.containerHeight += 55;*/
+      this.reduceCharLengthOnClick();
+    },
+    reduceCharLengthOnClick() {
+      if (this.charactersLength >= this.characters.length - 2) {
+        this.charactersLength = this.characters.length;
+      } else {
+        this.charactersLength += 10;
+      }
     },
     setHeightToDefault() {
       this.containerHeight = 60;
+      this.charactersLength = 10;
     },
     containerHeightMax() {
       if (this.containerHeight >= 800) {
@@ -83,7 +93,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "./style/styles.scss";
-
+.char-length {
+  color: white;
+  text-align: center;
+}
 h3,
 p {
   color: black;

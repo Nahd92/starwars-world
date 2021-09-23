@@ -30,7 +30,11 @@
       v-show="SearchInputField !== '' && searchValue !== ''"
       class="search-result"
     >
-      <SearchResult :searchValue="searchValue" />
+      <SearchResult
+        :searchValue="searchValue"
+        :movies="movies"
+        :characters="characters"
+      />
     </div>
   </div>
 </template>
@@ -41,6 +45,16 @@ import SearchResult from "./Result.vue";
 export default {
   components: {
     SearchResult,
+  },
+  props: {
+    characters: {
+      type: Array,
+      default: () => [],
+    },
+    movies: {
+      type: Array,
+      default: () => [],
+    },
   },
   name: "Search",
   data: () => ({
